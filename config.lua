@@ -42,7 +42,6 @@ hl.config({
       range = 30,
       render_power = 3,
       sharp = false,
-      ignore_window = true,
       color = "rgba(00000050)",
       offset = { 1, 1 },
       scale = 1.0,
@@ -129,14 +128,14 @@ hl.animation({ leaf = "windows", enabled = true, speed = 1, bezier = "shellSweet
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 1, bezier = "shellSweet", style = "slide" })
 hl.animation({ leaf = "layers", enabled = true, speed = 1, bezier = "shellSweet", style = "slide top" })
 hl.animation({ leaf = "layersOut", enabled = true, speed = 1, bezier = "snappyAccel", style = "slide top" })
-hl.animation({ leaf = "fade", enabled = true, speed = 0, bezier = "shellSweet" })
+hl.animation({ leaf = "fade", enabled = false, speed = 1, bezier = "shellSweet" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1, bezier = "shellSweet", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 1, bezier = "shellSweet", style = "slidevert" })
 hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 1, bezier = "snappyAccel", style = "slidevert" })
 
 -- Gesture specs
 hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "left", action = "dispatcher", dispatcher = hl.dsp.exec_cmd("tctl gesture left") })
-hl.gesture({ fingers = 3, direction = "right", action = "dispatcher", dispatcher = hl.dsp.exec_cmd("tctl gesture right") })
-hl.gesture({ fingers = 3, direction = "up", action = "dispatcher", dispatcher = hl.dsp.exec_cmd("tctl gesture up") })
-hl.gesture({ fingers = 3, direction = "down", action = "dispatcher", dispatcher = hl.dsp.exec_cmd("tctl gesture down") })
+hl.gesture({ fingers = 3, direction = "left", action = function() hl.exec_cmd("tctl gesture left") end })
+hl.gesture({ fingers = 3, direction = "right", action = function() hl.exec_cmd("tctl gesture right") end })
+hl.gesture({ fingers = 3, direction = "up", action = function() hl.exec_cmd("tctl gesture up") end })
+hl.gesture({ fingers = 3, direction = "down", action = function() hl.exec_cmd("tctl gesture down") end })

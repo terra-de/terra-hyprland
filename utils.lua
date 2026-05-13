@@ -131,7 +131,7 @@ local function parse_pattern(pattern)
             resolved[#resolved + 1] = word
           end
         else
-          resolved[#resolved + 1] = p:upper()
+          resolved[#resolved + 1] = p
         end
       end
       chords[#chords + 1] = table.concat(resolved, " + ")
