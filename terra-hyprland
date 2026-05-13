@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# terra-hyprland — Launch Hyprland with Terra DE Lua configuration
+# Installed to /usr/bin/terra-hyprland
+#
+# Usage: terra-hyprland [-- flags passed to Hyprland]
+#
+# Development: set TCTL_PATH to point at your dev tctl before launching.
+#   export TCTL_PATH=~/dev/terra-de/tctl/tctl
+#   terra-hyprland
+
+exec start-hyprland -- --config /usr/share/terra/hyprland/hyprland.lua "$@"
