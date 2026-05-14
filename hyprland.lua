@@ -51,8 +51,8 @@ require("rules")      -- Window + layer rules
 --
 -- Users can also use the binding system in local.lua:
 --   local utils = require("utils")
---   utils.set_binds({
---     { "<main-scope-mut-m>", utils.dsp.window.move({ workspace = "special:messages" }), { desc = "Move to messages" } },
+--   utils.bind_keys({
+--     ["main-scope-mut-m"] = { hl.dsp.window.move({ workspace = "special:messages" }), desc = "Move to messages" },
 --   })
 
 pcall(dofile, os.getenv("HOME") .. "/.config/hypr/local.lua")
@@ -74,9 +74,20 @@ hl.on("hyprland.start", function()
 end)
 
 -- ====================================================================
--- FLUSH BIND SERIALIZATION
+-- SUBMAP CHANGE NOTIFICATION  — signal terrashell which-key
 -- ====================================================================
 
--- Write keys.json and binds-prefix-map.json for which-key integration.
--- This runs after all set_binds() calls (including any in local.lua).
-require("utils").flush()
+-- Resolve tctl binary: TCTL_DEV_DIR env var override, else system PATH
+local tctl_bin = "tctl"
+local tctl_dev = os.getenv("TCTL_DEV_DIR")
+if tctl_dev then
+  tctl_bin = tctl_dev .. "/tctl"
+end
+
+hl.on("keybinds.submap", function(name)
+  if name and name ~= "" then
+    hl.exec_cmd(tctl_bin .. " keys show " .. name)
+  else
+    hl.exec_cmd(tctl_bin .. " keys dismiss")
+  end
+end)
