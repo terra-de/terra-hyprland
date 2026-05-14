@@ -19,7 +19,11 @@
 --   "scope" → "CTRL",   "sys"   → "ALT"
 --
 -- Submap naming is automatic: group name slug + parent path.
--- Every submap gets auto escape→reset and backspace→parent binds.
+-- Every submap gets:
+--   catchall  → reset (any undefined key closes the submap)
+--   escape    → reset (explicit close)
+--   backspace → parent submap or reset at root level
+-- Leaf binds inside a submap auto-reset to global after dispatching.
 
 local M = {}
 
@@ -110,7 +114,8 @@ end
 
 -- Recursively register binds and submaps.
 -- parent_slug is nil for root level, or the enclosing submap's slug.
-local function register_entries(entries, parent_slug)
+-- in_submap indicates whether we're inside a submap (triggers auto-reset for leaf binds).
+local function register_entries(entries, parent_slug, in_submap)
   for key_spec, value in pairs(entries) do
     local chord = resolve_key(key_spec)
 
@@ -136,20 +141,30 @@ local function register_entries(entries, parent_slug)
         hl.bind("backspace", hl.dsp.submap(parent_slug or "reset"), { description = parent_slug and "Back" or "Close" })
 
         -- Register all children in this submap context
-        register_entries(children, slug)
-      end)
+        register_entries(children, slug, true)
 
+        -- Catch-all: any undefined key press resets to global
+        hl.bind("catchall", hl.dsp.submap("reset"))
+      end)
     else
       -- === Leaf bind ===
-      -- value is always a table: { dispatcher, desc?, icon?, ...flags }
-      hl.bind(chord, value[1], build_opts(value))
+      if in_submap then
+        -- Auto-reset submap to global after dispatching the action
+        local action = value[1]
+        hl.bind(chord, function()
+          hl.dispatch(action)
+          hl.dispatch(hl.dsp.submap("reset"))
+        end, build_opts(value))
+      else
+        hl.bind(chord, value[1], build_opts(value))
+      end
     end
   end
 end
 
 -- Main entry point
 function M.bind_keys(entries)
-  register_entries(entries, nil)
+  register_entries(entries, nil, false)
 end
 
 return M
