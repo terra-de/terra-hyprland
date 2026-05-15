@@ -28,6 +28,9 @@ hl.env("GDK_USE_PORTAL", "1")
 -- Icon theme
 hl.env("GTK_ICON_THEME", "material-actions")
 
+-- Path resolution helpers
+local utils = require("utils")
+
 -- ====================================================================
 -- CONFIGURATION MODULES
 -- ====================================================================
@@ -64,8 +67,7 @@ pcall(dofile, os.getenv("HOME") .. "/.config/hypr/local.lua")
 hl.on("hyprland.start", function()
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   hl.exec_cmd("awww-daemon")
-  -- hl.exec_cmd("terrashell")
-  hl.exec_cmd("qs -p /home/trev/dev/terra-de/terrashell/")
+  hl.exec_cmd(utils.terrashell_bin())
   hl.exec_cmd("/bin/kdeconnectd")
   hl.exec_cmd("wl-paste --watch cliphist store")
   hl.exec_cmd("hyprsunset")
@@ -77,17 +79,10 @@ end)
 -- SUBMAP CHANGE NOTIFICATION  — signal terrashell which-key
 -- ====================================================================
 
--- Resolve tctl binary: TCTL_PATH env var override, else system PATH
-local tctl_bin = "tctl"
-local tctl_path = os.getenv("TCTL_PATH")
-if tctl_path then
-  tctl_bin = tctl_path .. "/tctl"
-end
-
 hl.on("keybinds.submap", function(name)
   if name and name ~= "" then
-    hl.exec_cmd(tctl_bin .. " keys show " .. name)
+    hl.exec_cmd(utils.tctl_bin() .. " keys show " .. name)
   else
-    hl.exec_cmd(tctl_bin .. " keys dismiss")
+    hl.exec_cmd(utils.tctl_bin() .. " keys dismiss")
   end
 end)

@@ -15,8 +15,8 @@ local utils = require("utils")
 utils.bind_keys({
 
   -- Brightness ---------------------
-  ["XF86MonBrightnessDown"] = { hl.dsp.exec_cmd("tctl brightness down 5"), desc = "Brightness down", locked = true, repeating = true },
-  ["XF86MonBrightnessUp"]   = { hl.dsp.exec_cmd("tctl brightness up 5"), desc = "Brightness up", locked = true, repeating = true },
+  ["XF86MonBrightnessDown"] = { utils.tctl("brightness down 5"), desc = "Brightness down", locked = true, repeating = true },
+  ["XF86MonBrightnessUp"]   = { utils.tctl("brightness up 5"), desc = "Brightness up", locked = true, repeating = true },
 
   -- Volume and mute ----------------
   ["XF86AudioLowerVolume"]  = { hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 ; wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), desc = "Volume down", locked = true, repeating = true },
@@ -31,7 +31,7 @@ utils.bind_keys({
   ["XF86AudioPrev"]         = { hl.dsp.exec_cmd("playerctl previous"), desc = "Previous track", locked = true },
 
   -- OSK ----------------------------
-  ["main-V"]                = { hl.dsp.exec_cmd("terrashell ipc call keyboard toggle"), desc = "Toggle OSK", icon = "keyboard" },
+  ["main-V"]                = { utils.tctl("osk toggle"), desc = "Toggle OSK", icon = "keyboard" },
 
   -- Window focus  ------------------
   ["main-h"]                = { hl.dsp.focus({ direction = "left" }) },
@@ -126,8 +126,8 @@ utils.bind_keys({
   ["main-space"]            = {
     group = "Leader",
 
-    r = { hl.dsp.exec_cmd("terrashell ipc call config reload; hyprctl reload"), desc = "Reload config", icon = "refresh" },
-    ["return"] = { hl.dsp.exec_cmd("terrashell ipc call appdrawer toggle"), desc = "App drawer", icon = "apps" },
+    r = { utils.tctl("config reload"), desc = "Reload config", icon = "refresh" },
+    ["return"] = { utils.tctl("appdrawer toggle"), desc = "App drawer", icon = "apps" },
 
     w = {
       group = "Window",
@@ -151,44 +151,44 @@ utils.bind_keys({
 
       c = { hl.dsp.exec_cmd("sleep 0.2; hyprpicker -a"), desc = "Color pick", icon = "colorize" },
       s = { hl.dsp.exec_cmd("grim -g \"$(slurp)\""), desc = "Screenshot region", icon = "screenshot" },
-      n = { hl.dsp.exec_cmd("terrashell ipc call controlcenter toggle"), desc = "Toggle notifications / control center" },
+      n = { utils.tctl("controlcenter toggle"), desc = "Toggle notifications / control center" },
     },
 
     s = {
       group = "Search",
 
       p = {
-        hl.dsp.exec_cmd("terrashell ipc call bitwarden togglePassword"),
+        utils.tctl("bitwarden password"),
         desc = "Passwords",
         icon = "password",
       },
 
       t = {
-        hl.dsp.exec_cmd("terrashell ipc call bitwarden toggleTotp"),
+        utils.tctl("bitwarden totp"),
         desc = "TOTP codes",
         icon = "pin",
       },
 
       u = {
-        hl.dsp.exec_cmd("terrashell ipc call bitwarden toggleUsername"),
+        utils.tctl("bitwarden username"),
         desc = "Usernames",
         icon = "person",
       },
 
       c = {
-        hl.dsp.exec_cmd("terrashell ipc call clipboardhistory toggle"),
+        utils.tctl("clipboard toggle"),
         desc = "Clipboard history",
         icon = "content_paste",
       },
 
       e = {
-        hl.dsp.exec_cmd("terrashell ipc call emoji toggle"),
+        utils.tctl("emoji toggle"),
         desc = "Emoji picker",
         icon = "emoji_emotions",
       },
 
       n = {
-        hl.dsp.exec_cmd("terrashell ipc call nerdfont toggle"),
+        utils.tctl("nerdfont toggle"),
         desc = "Nerd font icon picker",
         icon = "font_download",
       },

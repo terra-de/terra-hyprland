@@ -2,6 +2,7 @@
 -- Mirrors lines 375-508 of the original hyprland.conf
 
 local colors = require("colors")
+local utils = require("utils")
 
 -- Cursor
 hl.config({
@@ -135,7 +136,7 @@ hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 1, bezier =
 
 -- Gesture specs
 hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "left", action = function() hl.exec_cmd("tctl gesture left") end })
-hl.gesture({ fingers = 3, direction = "right", action = function() hl.exec_cmd("tctl gesture right") end })
-hl.gesture({ fingers = 3, direction = "up", action = function() hl.exec_cmd("tctl gesture up") end })
-hl.gesture({ fingers = 3, direction = "down", action = function() hl.exec_cmd("tctl gesture down") end })
+hl.gesture({ fingers = 3, direction = "left", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture left") end })
+hl.gesture({ fingers = 3, direction = "right", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture right") end })
+hl.gesture({ fingers = 3, direction = "up", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture up") end })
+hl.gesture({ fingers = 3, direction = "down", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture down") end })

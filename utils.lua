@@ -162,6 +162,27 @@ local function register_entries(entries, parent_slug, in_submap)
   end
 end
 
+-- Binary resolution helpers
+
+--- Return the resolved tctl binary path from TCTL_PATH env var, else system PATH
+function M.tctl_bin()
+  local p = os.getenv("TCTL_PATH")
+  return p and (p .. "/tctl") or "tctl"
+end
+
+--- Return the resolved terrashell binary path from TERRASHELL_PATH env var, else system PATH
+function M.terrashell_bin()
+  local p = os.getenv("TERRASHELL_PATH")
+  return p and (p .. "/terrashell") or "terrashell"
+end
+
+--- Return an hl.dsp.exec_cmd dispatcher for a tctl subcommand, using the
+--- TCTL_PATH-resolved binary.  Use in binds.lua in place of raw strings:
+---   utils.tctl("osk toggle")  →  hl.dsp.exec_cmd("/path/tctl osk toggle")
+function M.tctl(args)
+  return hl.dsp.exec_cmd(M.tctl_bin() .. " " .. args)
+end
+
 -- Main entry point
 function M.bind_keys(entries)
   register_entries(entries, nil, false)
