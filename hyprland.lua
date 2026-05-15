@@ -77,11 +77,11 @@ end)
 -- SUBMAP CHANGE NOTIFICATION  — signal terrashell which-key
 -- ====================================================================
 
--- Resolve tctl binary: TCTL_DEV_DIR env var override, else system PATH
+-- Resolve tctl binary: TCTL_PATH env var override, else system PATH
 local tctl_bin = "tctl"
-local tctl_dev = os.getenv("TCTL_DEV_DIR")
-if tctl_dev then
-  tctl_bin = tctl_dev .. "/tctl"
+local tctl_path = os.getenv("TCTL_PATH")
+if tctl_path then
+  tctl_bin = tctl_path .. "/tctl"
 end
 
 hl.on("keybinds.submap", function(name)
