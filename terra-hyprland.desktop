@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Terra DE
+Comment=A modern desktop environment built on Hyprland
+Exec=terra-hyprland
+TryExec=terra-hyprland
+Type=Application
+DesktopNames=Terra DE
