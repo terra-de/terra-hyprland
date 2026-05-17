@@ -1,142 +1,168 @@
 -- config.lua — Hyprland configuration blocks, curves, animations, gestures
--- Mirrors lines 375-508 of the original hyprland.conf
+-- Values come from settings.lua (preferences.json + machine.json)
 
+local settings = require("settings")
 local colors = require("colors")
 local utils = require("utils")
 
--- Cursor
+-- ====================================================================
+-- CURSOR
+-- ====================================================================
+
 hl.config({
   cursor = {
-    no_hardware_cursors = true,
+    no_hardware_cursors = settings.cursor.no_hardware_cursors,
   },
 })
 
--- Main look and feel
+-- ====================================================================
+-- MAIN LOOK AND FEEL
+-- ====================================================================
+
 hl.config({
   general = {
-    border_size = 0,
-    gaps_in = 6,
-    gaps_out = 12,
-    gaps_workspaces = 6,
+    border_size = settings.general.border_size,
+    gaps_in = settings.general.gaps_in,
+    gaps_out = settings.general.gaps_out,
+    gaps_workspaces = settings.general.gaps_workspaces,
 
     col = {
       active_border = colors.c4,
       inactive_border = colors.base,
     },
 
-    layout = "dwindle",
-    no_focus_fallback = false,
-    resize_on_border = true,
-    extend_border_grab_area = 15,
-    allow_tearing = false,
-    resize_corner = 0,
+    layout = settings.general.layout,
+    no_focus_fallback = settings.general.no_focus_fallback,
+    resize_on_border = settings.general.resize_on_border,
+    extend_border_grab_area = settings.general.extend_border_grab_area,
+    allow_tearing = settings.general.allow_tearing,
+    resize_corner = settings.general.resize_corner,
   },
 
   decoration = {
-    rounding = 16,
-    active_opacity = 1.0,
-    inactive_opacity = 1.0,
-    fullscreen_opacity = 1.0,
+    rounding = settings.decoration.rounding,
+    active_opacity = settings.decoration.active_opacity,
+    inactive_opacity = settings.decoration.inactive_opacity,
+    fullscreen_opacity = settings.decoration.fullscreen_opacity,
 
     shadow = {
-      enabled = true,
-      range = 30,
-      render_power = 3,
-      sharp = false,
-      color = "rgba(00000050)",
-      offset = { 1, 1 },
-      scale = 1.0,
+      enabled = settings.decoration.shadow.enabled,
+      range = settings.decoration.shadow.range,
+      render_power = settings.decoration.shadow.render_power,
+      sharp = settings.decoration.shadow.sharp,
+      color = settings.decoration.shadow.color,
+      offset = { settings.decoration.shadow.offset.x, settings.decoration.shadow.offset.y },
+      scale = settings.decoration.shadow.scale,
     },
 
-    dim_inactive = true,
-    dim_strength = 0.1,
-    dim_special = 0.1,
-    dim_around = 0.4,
+    dim_inactive = settings.decoration.dim.inactive,
+    dim_strength = settings.decoration.dim.strength,
+    dim_special = settings.decoration.dim.special,
+    dim_around = settings.decoration.dim.around,
 
     blur = {
-      enabled = false,
-      size = 8,
-      passes = 3,
-      ignore_opacity = true,
-      new_optimizations = true,
-      xray = false,
-      noise = 0.07,
-      contrast = 1.2,
-      brightness = 1.7,
-      vibrancy = 0.8,
-      vibrancy_darkness = 0.4,
-      special = false,
-      popups = true,
-      popups_ignorealpha = 0.2,
+      enabled = settings.decoration.blur.enabled,
+      size = settings.decoration.blur.size,
+      passes = settings.decoration.blur.passes,
+      ignore_opacity = settings.decoration.blur.ignore_opacity,
+      new_optimizations = settings.decoration.blur.new_optimizations,
+      xray = settings.decoration.blur.xray,
+      noise = settings.decoration.blur.noise,
+      contrast = settings.decoration.blur.contrast,
+      brightness = settings.decoration.blur.brightness,
+      vibrancy = settings.decoration.blur.vibrancy,
+      vibrancy_darkness = settings.decoration.blur.vibrancy_darkness,
+      special = settings.decoration.blur.special,
+      popups = settings.decoration.blur.popups,
+      popups_ignorealpha = settings.decoration.blur.popups_ignorealpha,
     },
   },
 
   animations = {
-    enabled = true,
+    enabled = settings.animations.enabled,
   },
 
   misc = {
-    force_default_wallpaper = 0,
-    disable_hyprland_logo = false,
-    disable_splash_rendering = true,
-    initial_workspace_tracking = 0,
-    enable_anr_dialog = false,
+    force_default_wallpaper = settings.misc.force_default_wallpaper,
+    disable_hyprland_logo = settings.misc.disable_hyprland_logo,
+    disable_splash_rendering = settings.misc.disable_splash_rendering,
+    initial_workspace_tracking = settings.misc.initial_workspace_tracking,
+    enable_anr_dialog = settings.misc.enable_anr_dialog,
   },
 
   dwindle = {
-    preserve_split = true,
-    force_split = 2,
-    precise_mouse_move = true,
+    preserve_split = settings.dwindle.preserve_split,
+    force_split = settings.dwindle.force_split,
+    precise_mouse_move = settings.dwindle.precise_mouse_move,
   },
 
   input = {
-    kb_layout = "us",
-    numlock_by_default = true,
-    accel_profile = "flat",
-    scroll_method = "2fg",
-    follow_mouse = 1,
-    special_fallthrough = false,
-    sensitivity = 0,
+    kb_layout = settings.input.kb_layout,
+    numlock_by_default = settings.input.numlock_by_default,
+    accel_profile = settings.input.accel_profile,
+    scroll_method = settings.input.scroll_method,
+    follow_mouse = settings.input.follow_mouse,
+    special_fallthrough = settings.input.special_fallthrough,
+    sensitivity = settings.input.sensitivity,
 
     touchpad = {
-      disable_while_typing = true,
-      natural_scroll = true,
-      scroll_factor = 0.7,
+      disable_while_typing = settings.input.touchpad.disable_while_typing,
+      natural_scroll = settings.input.touchpad.natural_scroll,
+      scroll_factor = settings.input.touchpad.scroll_factor,
     },
 
     tablet = {
-      output = "current",
+      output = settings.input.tablet.output,
     },
   },
 
   gestures = {
-    workspace_swipe_distance = 300,
-    workspace_swipe_touch = true,
-    workspace_swipe_invert = true,
-    workspace_swipe_min_speed_to_force = 5,
-    workspace_swipe_cancel_ratio = 0.5,
-    workspace_swipe_direction_lock = false,
-    workspace_swipe_forever = true,
+    workspace_swipe_distance = settings.gestures.workspace_swipe_distance,
+    workspace_swipe_touch = settings.gestures.workspace_swipe_touch,
+    workspace_swipe_invert = settings.gestures.workspace_swipe_invert,
+    workspace_swipe_min_speed_to_force = settings.gestures.workspace_swipe_min_speed_to_force,
+    workspace_swipe_cancel_ratio = settings.gestures.workspace_swipe_cancel_ratio,
+    workspace_swipe_direction_lock = settings.gestures.workspace_swipe_direction_lock,
+    workspace_swipe_forever = settings.gestures.workspace_swipe_forever,
   },
 })
 
--- Animation curves (bezier)
-hl.curve("shellSweet", { type = "bezier", points = { { 0.38, 1.21 }, { 0.22, 1.0 } } })
-hl.curve("snappyAccel", { type = "bezier", points = { { 0.3, 0.0 }, { 0.8, 0.15 } } })
+-- ====================================================================
+-- BEZIER CURVES  (from settings)
+-- ====================================================================
 
--- Animations
-hl.animation({ leaf = "windows", enabled = true, speed = 1, bezier = "shellSweet", style = "slide" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 1, bezier = "shellSweet", style = "slide" })
-hl.animation({ leaf = "layers", enabled = true, speed = 1, bezier = "shellSweet", style = "slide top" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 1, bezier = "snappyAccel", style = "slide top" })
-hl.animation({ leaf = "fade", enabled = false, speed = 1, bezier = "shellSweet" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1, bezier = "shellSweet", style = "slide" })
-hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 1, bezier = "shellSweet", style = "slidevert" })
-hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 1, bezier = "snappyAccel", style = "slidevert" })
+for name, curve in pairs(settings.bezier_curves) do
+  hl.curve(name, curve)
+end
 
--- Gesture specs
-hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
-hl.gesture({ fingers = 3, direction = "left", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture left") end })
-hl.gesture({ fingers = 3, direction = "right", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture right") end })
-hl.gesture({ fingers = 3, direction = "up", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture up") end })
-hl.gesture({ fingers = 3, direction = "down", action = function() hl.exec_cmd(utils.tctl_bin() .. " gesture down") end })
+-- ====================================================================
+-- ANIMATIONS  (from settings)
+-- ====================================================================
+
+for leaf, opts in pairs(settings.animation_entries) do
+  hl.animation({
+    leaf = leaf,
+    enabled = opts.enabled,
+    speed = opts.speed,
+    bezier = opts.bezier,
+    style = opts.style,
+  })
+end
+
+-- ====================================================================
+-- GESTURE SPECS  (from settings)
+-- ====================================================================
+
+for _, spec in ipairs(settings.gesture_specs) do
+  if spec.action == "workspace" then
+    hl.gesture({ fingers = spec.fingers, direction = spec.direction, action = "workspace" })
+  elseif spec.action == "tctl" then
+    hl.gesture({
+      fingers = spec.fingers,
+      direction = spec.direction,
+      action = function() hl.exec_cmd(utils.tctl_bin() .. " " .. spec.command) end,
+    })
+  else
+    hl.gesture({ fingers = spec.fingers, direction = spec.direction, action = spec.action })
+  end
+end

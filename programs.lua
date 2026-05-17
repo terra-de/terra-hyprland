@@ -1,8 +1,12 @@
+-- programs.lua — Application paths (from settings)
+
+local settings = require("settings")
+
 local M = {}
 
-M.terminal = "foot zellij-session-picker"
-M.quickterm = "foot zellij attach -c quickterm"
-M.file_manager = "dolphin"
-M.browser = "firefox"
+M.terminal = settings.programs.terminal
+M.quickterm = settings.programs.quickterm
+M.file_manager = settings.programs.file_manager
+M.browser = settings.programs.browser
 
 return M

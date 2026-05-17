@@ -44,14 +44,74 @@ local DEFAULTS = {
   ansi_15 = "#e9e1ea",
 }
 
+-- Try to load log module for diagnostics (non-fatal if unavailable)
+local log_ok, log = pcall(require, "log")
+if not log_ok then
+  log = { info = function() end, debug = function() end, error = function() end }
+end
+
+-- JSON-to-Lua converter (same as settings.lua):
+--   • Quoted strings followed by `:` are wrapped as keys
+--   • JSON arrays `[...]` become Lua tables `{...}`
+local function to_lua(s)
+  local out = {}
+  local i = 1
+  while i <= #s do
+    local c = s:sub(i, i)
+    if c == '"' and (i == 1 or s:sub(i - 1, i - 1) ~= '\\') then
+      local start = i
+      local j = i + 1
+      while j <= #s do
+        local c2 = s:sub(j, j)
+        if c2 == '"' and s:sub(j - 1, j - 1) ~= '\\' then
+          local key_str = s:sub(start, j)
+          local k = j + 1
+          while k <= #s and s:sub(k, k):match("%s") do k = k + 1 end
+          if k <= #s and s:sub(k, k) == ':' then
+            local bare_key = s:sub(start + 1, j - 1)
+            if bare_key:match("^[%a_][%w_]*$") then
+              out[#out + 1] = bare_key .. "="
+            else
+              out[#out + 1] = "[" .. key_str .. "]="
+            end
+            i = k + 1
+          else
+            out[#out + 1] = key_str
+            i = j + 1
+          end
+          break
+        end
+        j = j + 1
+      end
+      if j > #s then
+        out[#out + 1] = s:sub(start)
+        i = #s + 1
+      end
+    elseif c == '[' then
+      out[#out + 1] = '{'
+      i = i + 1
+    elseif c == ']' then
+      out[#out + 1] = '}'
+      i = i + 1
+    else
+      out[#out + 1] = c
+      i = i + 1
+    end
+  end
+  return table.concat(out)
+end
+
 -- Tiny JSON decoder: sandboxed load() — safe because we control the source.
 local function parse_json(s)
-  local fn, err = load("return " .. s, "=palette.json", "t", {})
+  local converted = to_lua(s)
+  local fn, err = load("return " .. converted, "=palette.json", "t", {})
   if not fn then
+    log.debug("colors parse_json: load failed: " .. tostring(err))
     return nil, err
   end
   local ok, result = pcall(fn)
   if not ok then
+    log.debug("colors parse_json: execution error: " .. tostring(result))
     return nil, result
   end
   return result
@@ -88,23 +148,36 @@ local path = home and (home .. "/.config/terra/palette.json")
 local colors
 
 if path then
+  log.info("colors: reading " .. path)
   local f, err = io.open(path, "r")
   if f then
     local content = f:read("*a")
     f:close()
-    local data, err = parse_json(content or "")
-    if data then
-      local mode = data.mode
-      local mode_data = mode and data[mode]
-      if mode_data then
-        colors = build(mode_data)
+    if content and content ~= "" then
+      local data, parse_err = parse_json(content)
+      if data then
+        local mode = data.mode
+        local mode_data = mode and data[mode]
+        if mode_data then
+          colors = build(mode_data)
+          log.info("colors: loaded " .. path .. " (mode=" .. tostring(mode) .. ")")
+        else
+          log.debug("colors: no mode_data for mode=" .. tostring(mode))
+        end
+      else
+        log.debug("colors: parse error: " .. tostring(parse_err))
       end
+    else
+      log.debug("colors: empty file")
     end
+  else
+    log.debug("colors: cannot open " .. tostring(path) .. " — " .. tostring(err))
   end
 end
 
 -- Fallback to full defaults if anything went wrong
 if not colors then
+  log.info("colors: using built-in defaults")
   colors = build(DEFAULTS)
 end
 

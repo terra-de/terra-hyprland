@@ -1,12 +1,14 @@
--- mods.lua — Modifier and alias definitions
+-- mods.lua — Modifier and alias definitions (from settings)
+
+local settings = require("settings")
 
 local M = {}
 
-M.main_mod = "SUPER"
-M.mut_mod = "SHIFT"
-M.scope_mod = "CTRL"
-M.sys_mod = "ALT"
-M.leader = "SUPER + SPACE"
+M.main_mod = settings.keys.modifiers.main
+M.mut_mod = settings.keys.modifiers.mut
+M.scope_mod = settings.keys.modifiers.scope
+M.sys_mod = settings.keys.modifiers.sys
+M.leader = settings.keys.leader
 
 -- Aliases for the bind system: <alias-key> → resolved modifier string
 M.aliases = {

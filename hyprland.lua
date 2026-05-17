@@ -1,82 +1,116 @@
 -- terra-hyprland — Hyprland Lua configuration for Terra DE
--- Installed to /usr/share/terra/hyprland/hyprland.lua
 --
--- Launch with: terra-hyprland
---   (runs: start-hyprland -- --config /usr/share/terra/hyprland/hyprland.lua)
-
--- Ensure module resolution works for files in the same directory
--- package.path = "/usr/share/terra/hyprland/?.lua;" .. package.path
+-- Diagnostic checkpoint #1 — before any require() calls.
+-- If this env var is set, hyprland.lua is definitely being loaded.
+hl.env("TERRA_DIAG", "1_top_of_file")
 
 -- ====================================================================
--- ENVIRONMENT VARIABLES
+-- SETTINGS LOADER
 -- ====================================================================
 
--- Cursor
-hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
-hl.env("XCURSOR_SIZE", "24")
+hl.env("TERRA_DIAG", "2_before_require_log")
+local log = require("log")
+hl.env("TERRA_DIAG", "3_after_require_log")
 
--- Desktop portal
-hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+log.info("=== terra-hyprland starting ===")
 
--- Wayland-by-default for apps
-hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
-hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
-hl.env("QT_QPA_PLATFORM", "wayland")
-hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
-hl.env("GDK_USE_PORTAL", "1")
+-- Wrap require() in pcall so a settings failure doesn't kill the session
+hl.env("TERRA_DIAG", "4_before_require_settings")
+local settings_ok, settings = pcall(require, "settings")
+if not settings_ok then
+  log.error("require('settings') FAILED: " .. tostring(settings))
+  hl.env("TERRA_DIAG", "5_settings_FAILED")
+  -- Minimal fallback so hyprland.lua doesn't crash
+  settings = {
+    env = {},
+    autostart = {},
+    cursor = { theme = "Bibata-Modern-Classic", size = 24 },
+    monitors = {},
+  }
+else
+  hl.env("TERRA_DIAG", "5_settings_OK")
+  -- Count top-level keys for diagnostics
+  local count = 0
+  for _ in pairs(settings) do count = count + 1 end
+  log.info("settings loaded: " .. count .. " top-level keys")
+  log.info("settings.monitors: " .. tostring(#settings.monitors) .. " entries")
+end
 
--- Icon theme
-hl.env("GTK_ICON_THEME", "material-actions")
-
--- Path resolution helpers
+hl.env("TERRA_DIAG", "6_before_require_utils")
 local utils = require("utils")
+hl.env("TERRA_DIAG", "7_after_require_utils")
+log.info("utils loaded")
+
+-- ====================================================================
+-- ENVIRONMENT VARIABLES  (from settings)
+-- ====================================================================
+
+local env_count = 0
+for key, value in pairs(settings.env) do
+  hl.env(key, value)
+  env_count = env_count + 1
+  log.debug("  env " .. key .. "=" .. tostring(value))
+end
+log.info("Set " .. env_count .. " env vars")
+
+-- ====================================================================
+-- MONITORS  (from settings / machine.json)
+-- ====================================================================
+
+for _, mon in ipairs(settings.monitors) do
+  hl.monitor(mon)
+  log.debug("  monitor: " .. tostring(mon.output or mon.name or "?"))
+end
+log.info("Applied " .. tostring(#settings.monitors) .. " monitors")
 
 -- ====================================================================
 -- CONFIGURATION MODULES
 -- ====================================================================
 
-require("colors")     -- Color lookup from ~/.config/terra/palette.json
-require("config")     -- General, decoration, input, animations, etc.
-require("workspaces") -- Special workspace rules
-require("binds")      -- All keybindings
-require("rules")      -- Window + layer rules
+log.info("Loading colors.lua...")
+require("colors")
+log.info("Loading config.lua...")
+require("config")
+log.info("Loading workspaces.lua...")
+require("workspaces")
+log.info("Loading binds.lua...")
+require("binds")
+log.info("Loading rules.lua...")
+require("rules")
+log.info("All modules loaded")
 
 -- ====================================================================
 -- MACHINE-SPECIFIC OVERRIDES
 -- ====================================================================
 
--- If ~/.config/hypr/local.lua exists, load it.
--- Users put monitors, per-device tweaks, additional binds here.
--- Example local.lua:
---   hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.5 })
---   hl.monitor({ output = "", mode = "preferred", position = "auto-left" })
---   hl.device({ name = "syna32c0:00-06cb:ceb0-touchpad", accel_profile = "adaptive" })
---
--- Users can also use the binding system in local.lua:
---   local utils = require("utils")
---   utils.bind_keys({
---     ["main-scope-mut-m"] = { hl.dsp.window.move({ workspace = "special:messages" }), desc = "Move to messages" },
---   })
-
 pcall(dofile, os.getenv("HOME") .. "/.config/hypr/local.lua")
+log.info("local.lua check done")
 
 -- ====================================================================
--- AUTOSTART
+-- AUTOSTART  (from settings)
 -- ====================================================================
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
-  hl.exec_cmd("awww-daemon")
-  hl.exec_cmd(utils.terrashell_bin())
-  hl.exec_cmd("/bin/kdeconnectd")
-  hl.exec_cmd("wl-paste --watch cliphist store")
-  hl.exec_cmd("hyprsunset")
-  hl.exec_cmd("hyprctl setcursor 'Bibata-Modern-Classic' 24")
-  hl.exec_cmd("cd ~/.config/matugen/materialized-web && uv run app.py")
+  log.info("=== autostart begin ===")
+
+  for _, cmd in ipairs(settings.autostart) do
+    hl.exec_cmd(cmd)
+    log.debug("  autostart: " .. cmd)
+  end
+
+  local ts = utils.terrashell_bin()
+  hl.exec_cmd(ts)
+  log.info("  autostart: " .. ts)
+
+  local sc = "hyprctl setcursor '" .. settings.cursor.theme .. "' " .. settings.cursor.size
+  hl.exec_cmd(sc)
+  log.info("  autostart: " .. sc)
+
+  log.info("=== autostart end ===")
 end)
 
 -- ====================================================================
--- SUBMAP CHANGE NOTIFICATION  — signal terrashell which-key
+-- SUBMAP CHANGE NOTIFICATION
 -- ====================================================================
 
 hl.on("keybinds.submap", function(name)
@@ -86,3 +120,5 @@ hl.on("keybinds.submap", function(name)
     hl.exec_cmd(utils.tctl_bin() .. " keys dismiss")
   end
 end)
+
+log.info("=== terra-hyprland config loading complete ===")
