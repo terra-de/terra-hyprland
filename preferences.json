@@ -187,7 +187,8 @@
   "workspace_rules": [
     {
       "workspace": "special:quickterm",
-      "gaps_out": { "top": 150, "left": 30, "bottom": 0, "right": 30 }
+      "gaps_out": { "top": 150, "left": 30, "bottom": 0, "right": 30 },
+      "on_created_empty": "foot zellij attach -c quickterm"
     }
   ]
 }
