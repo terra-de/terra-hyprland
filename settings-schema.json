@@ -1809,17 +1809,17 @@
         "$default": 1.0,
         "$min": 1.0,
         "$max": 5.0,
-        "$help": "Cursor zoom factor (not yet consumed)"
+        "$help": "Cursor zoom factor"
       },
       "zoom_rigid": {
         "$type": "bool",
         "$default": false,
-        "$help": "Rigid cursor zoom (not yet consumed)"
+        "$help": "Rigid cursor zoom"
       },
       "enable_hyprcursor": {
         "$type": "bool",
         "$default": true,
-        "$help": "Enable Hyprcursor support (not yet consumed)"
+        "$help": "Enable Hyprcursor support"
       },
       "inactive_timeout": {
         "$type": "float",
