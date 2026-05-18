@@ -21,224 +21,6 @@ hl.env("TERRA_DIAG_SETTINGS", "1_loaded")
 --   settings.monitors            -- from machine.json (or empty)
 --   settings.programs.terminal   -- program path
 
--- ====================================================================
--- DEFAULT SETTINGS  — mirrors current terra-hyprland hardcoded values
--- ====================================================================
-local DEFAULTS = {
-  version = 1,
-
-  -- Cursor
-  cursor = {
-    theme = "Bibata-Modern-Classic",
-    size = 24,
-    no_hardware_cursors = true,
-  },
-
-  -- General behaviour
-  general = {
-    border_size = 0,
-    gaps_in = 6,
-    gaps_out = 12,
-    gaps_workspaces = 6,
-    layout = "dwindle",
-    no_focus_fallback = false,
-    resize_on_border = true,
-    extend_border_grab_area = 15,
-    allow_tearing = false,
-    resize_corner = 0,
-  },
-
-  -- Decoration / appearance
-  decoration = {
-    rounding = 16,
-    active_opacity = 1.0,
-    inactive_opacity = 1.0,
-    fullscreen_opacity = 1.0,
-    shadow = {
-      enabled = true,
-      range = 30,
-      render_power = 3,
-      sharp = false,
-      color = "rgba(00000050)",
-      offset = { x = 1, y = 1 },
-      scale = 1.0,
-    },
-    dim = {
-      inactive = true,
-      strength = 0.1,
-      special = 0.1,
-      around = 0.4,
-    },
-    blur = {
-      enabled = false,
-      size = 8,
-      passes = 3,
-      ignore_opacity = true,
-      new_optimizations = true,
-      xray = false,
-      noise = 0.07,
-      contrast = 1.2,
-      brightness = 1.7,
-      vibrancy = 0.8,
-      vibrancy_darkness = 0.4,
-      special = false,
-      popups = true,
-      popups_ignorealpha = 0.2,
-    },
-  },
-
-  -- Animation toggle
-  animations = {
-    enabled = true,
-  },
-
-  -- Misc Hyprland settings
-  misc = {
-    force_default_wallpaper = 0,
-    disable_hyprland_logo = false,
-    disable_splash_rendering = true,
-    initial_workspace_tracking = 0,
-    enable_anr_dialog = false,
-  },
-
-  -- Dwindle layout
-  dwindle = {
-    preserve_split = true,
-    force_split = 2,
-    precise_mouse_move = true,
-  },
-
-  -- Input
-  input = {
-    kb_layout = "us",
-    numlock_by_default = true,
-    accel_profile = "flat",
-    scroll_method = "2fg",
-    follow_mouse = 1,
-    special_fallthrough = false,
-    sensitivity = 0,
-    touchpad = {
-      disable_while_typing = true,
-      natural_scroll = true,
-      scroll_factor = 0.7,
-    },
-    tablet = {
-      output = "current",
-    },
-  },
-
-  -- Touchpad gestures
-  gestures = {
-    workspace_swipe_distance = 300,
-    workspace_swipe_touch = true,
-    workspace_swipe_invert = true,
-    workspace_swipe_min_speed_to_force = 5,
-    workspace_swipe_cancel_ratio = 0.5,
-    workspace_swipe_direction_lock = false,
-    workspace_swipe_forever = true,
-  },
-
-  -- Bezier curves for animations
-  bezier_curves = {
-    bounce = {
-      type = "bezier",
-      points = { { 0.38, 1.21 }, { 0.22, 1.0 } },
-    },
-    ["smooth-in"] = {
-      type = "bezier",
-      points = { { 0.3, 0.0 }, { 0.8, 0.15 } },
-    },
-  },
-
-  -- Per-leaf animation entries
-  animation_entries = {
-    windows =             { enabled = true,  speed = 3,   bezier = "bounce",    style = "slide" },
-    windowsOut =          { enabled = true,  speed = 3,   bezier = "bounce",    style = "slide" },
-    layers =              { enabled = true,  speed = 2,   bezier = "bounce",    style = "slide top" },
-    layersOut =           { enabled = true,  speed = 2,   bezier = "smooth-in", style = "slide top" },
-    workspaces =          { enabled = true,  speed = 3.5, bezier = "bounce",    style = "slide" },
-    specialWorkspace =    { enabled = true,  speed = 3,   bezier = "bounce",    style = "slidevert" },
-    specialWorkspaceOut = { enabled = true,  speed = 2,   bezier = "smooth-in", style = "slidevert" },
-  },
-
-  -- Gesture specs (for hl.gesture calls)
-  gesture_specs = {
-    { fingers = 4, direction = "horizontal", action = "workspace" },
-    { fingers = 3, direction = "left",   action = "tctl", command = "gesture left" },
-    { fingers = 3, direction = "right",  action = "tctl", command = "gesture right" },
-    { fingers = 3, direction = "up",     action = "tctl", command = "gesture up" },
-    { fingers = 3, direction = "down",   action = "tctl", command = "gesture down" },
-  },
-
-  -- Environment variables
-  env = {
-    XCURSOR_THEME = "Bibata-Modern-Classic",
-    XCURSOR_SIZE = "24",
-    XDG_CURRENT_DESKTOP = "Hyprland",
-    ELECTRON_OZONE_PLATFORM_HINT = "auto",
-    QT_QPA_PLATFORMTHEME = "qt6ct",
-    QT_QPA_PLATFORM = "wayland",
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1",
-    GDK_USE_PORTAL = "1",
-    GTK_ICON_THEME = "material-actions",
-  },
-
-  -- Autostart commands (simple strings — terrashell + setcursor are handled in hyprland.lua)
-  autostart = {
-    "systemctl --user start hyprpolkitagent",
-    "awww-daemon",
-    "/bin/kdeconnectd",
-    "wl-paste --watch cliphist store",
-    "hyprsunset",
-    "cd ~/.config/matugen/materialized-web && uv run app.py",
-  },
-
-  -- Program paths  (overridable in preferences.json)
-  programs = {
-    terminal = "foot zellij-session-picker",
-    quickterm = "foot zellij attach -c quickterm",
-    file_manager = "dolphin",
-    browser = "firefox",
-  },
-
-  -- Key modifier aliases  (used by binds.lua)
-  keys = {
-    modifiers = {
-      main  = "SUPER",
-      mut   = "SHIFT",
-      scope = "CTRL",
-      sys   = "ALT",
-    },
-    leader = "SUPER + SPACE",
-  },
-
-  -- Window rules
-  window_rules = {
-    suppress_maximize = true,
-    fullscreen_classes = { "steam_app*", "factorio*", "Terraria*" },
-    additional = {},
-  },
-
-  -- Layer rules
-  layer_rules = {
-    no_anim_namespaces = { "^quickshell(.*)?$", "selection" },
-    animation_overrides = {
-      { namespace = "wvkbd", animation = "slide bottom" },
-    },
-  },
-
-  -- Workspace rules
-  workspace_rules = {
-    {
-      workspace = "special:quickterm",
-      gaps_out = { top = 150, left = 30, bottom = 0, right = 30 },
-    },
-  },
-
-  -- Machine-specific (filled by machine.json; empty by default)
-  monitors = {},
-}
-
 -- Quick pre-require log (in case log.lua itself doesn't load)
 -- ~/.local/share/terra/hyprland.log
 
@@ -400,6 +182,96 @@ local function deep_merge(base, overlay)
     end
   end
   return result
+end
+
+-- ====================================================================
+-- SCHEMA LOADING  (replaces hardcoded DEFAULTS table)
+--
+-- Loads settings-schema.json, strips metadata ($-prefixed keys),
+-- then flattens category wrappers to produce the DEFAULTS table.
+-- ====================================================================
+
+--- Recursively strip all $-prefixed metadata keys from the schema.
+--- - Objects with $default resolve to that scalar value.
+--- - Objects with $defaults resolve to that value (recursively stripped).
+--- - Otherwise recurses into non-$ children.
+local function strip_meta(v)
+  if type(v) ~= "table" then return v end
+  if v["$default"] ~= nil then return v["$default"] end
+  if v["$defaults"] ~= nil then return strip_meta(v["$defaults"]) end
+  local result = {}
+  for k, val in pairs(v) do
+    if type(k) ~= "string" or k:sub(1, 1) ~= "$" then
+      result[k] = strip_meta(val)
+    end
+  end
+  return result
+end
+
+--- Flatten category wrappers: lift all children of category objects
+--- up one level. A category wrapper is an object where every non-$
+--- child is itself a table (no direct scalar values).
+local function flatten_categories(t)
+  local result = {}
+  for k, v in pairs(t) do
+    if type(v) == "table" and type(k) == "string" and k:sub(1, 1) ~= "$" then
+      local is_category = true
+      for ck, cv in pairs(v) do
+        if not (type(ck) == "string" and ck:sub(1, 1) == "$") and type(cv) ~= "table" then
+          is_category = false
+          break
+        end
+      end
+      if is_category then
+        for ck, cv in pairs(v) do
+          if not (type(ck) == "string" and ck:sub(1, 1) == "$") then
+            result[ck] = cv
+          end
+        end
+      else
+        result[k] = v
+      end
+    else
+      result[k] = v
+    end
+  end
+  return result
+end
+
+--- Resolve schema file path relative to this Lua file's location.
+--- Uses debug.getinfo to find where settings.lua was loaded from,
+--- then appends the schema filename. Works in any directory layout.
+local function resolve_schema_path()
+  local info = debug.getinfo(1, "S")
+  if info and info.source and info.source:sub(1, 1) == "@" then
+    local filepath = info.source:sub(2)
+    local dir = filepath:match("^(.*/)")
+    if dir then
+      return dir .. "settings-schema.json"
+    end
+  end
+  -- Last-resort fallback if debug info is unavailable
+  return "/usr/share/terra/hyprland/settings-schema.json"
+end
+
+-- Load and process schema to produce DEFAULTS
+local schema_file = resolve_schema_path()
+if not schema_file then
+  error("settings-schema.json not found")
+end
+
+local raw_schema = read_json_file(schema_file)
+if not raw_schema then
+  error("Failed to parse settings-schema.json")
+end
+
+local DEFAULTS = flatten_categories(strip_meta(raw_schema))
+
+log.info("Schema loaded from: " .. schema_file)
+do
+  local kc = 0
+  for _ in pairs(DEFAULTS) do kc = kc + 1 end
+  log.info("DEFAULTS from schema: " .. kc .. " top-level keys")
 end
 
 -- ====================================================================

@@ -1,0 +1,1222 @@
+{
+  "version": 1,
+  "window": {
+    "$ui_label": "Window Management",
+    "$icon": "dashboard",
+    "general": {
+      "border_size": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 20,
+        "$help": "Border thickness in pixels"
+      },
+      "gaps_in": {
+        "$type": "int",
+        "$default": 6,
+        "$min": 0,
+        "$max": 50,
+        "$help": "Gap between windows in a layout"
+      },
+      "gaps_out": {
+        "$type": "int",
+        "$default": 12,
+        "$min": 0,
+        "$max": 50,
+        "$help": "Gap between windows and screen edges"
+      },
+      "gaps_workspaces": {
+        "$type": "int",
+        "$default": 6,
+        "$min": 0,
+        "$max": 50,
+        "$help": "Gap between workspace monitors"
+      },
+      "layout": {
+        "$type": "enum",
+        "$default": "dwindle",
+        "$values": [
+          "dwindle",
+          "master"
+        ],
+        "$help": "Layout plugin"
+      },
+      "no_focus_fallback": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Don't auto-focus when focused window closes"
+      },
+      "resize_on_border": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Resize by dragging window border"
+      },
+      "extend_border_grab_area": {
+        "$type": "int",
+        "$default": 15,
+        "$min": 0,
+        "$max": 50,
+        "$help": "Extended border grab area in pixels"
+      },
+      "allow_tearing": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Allow window tearing"
+      },
+      "resize_corner": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Resize corner"
+      }
+    },
+    "decoration": {
+      "rounding": {
+        "$type": "int",
+        "$default": 16,
+        "$min": 0,
+        "$help": "Window corner rounding radius"
+      },
+      "active_opacity": {
+        "$type": "float",
+        "$default": 1.0,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Opacity of active windows"
+      },
+      "inactive_opacity": {
+        "$type": "float",
+        "$default": 1.0,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Opacity of inactive windows"
+      },
+      "fullscreen_opacity": {
+        "$type": "float",
+        "$default": 1.0,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Opacity of fullscreen windows"
+      },
+      "shadow": {
+        "enabled": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Enable window shadows"
+        },
+        "range": {
+          "$type": "int",
+          "$default": 30,
+          "$min": 0,
+          "$help": "Shadow range in pixels"
+        },
+        "render_power": {
+          "$type": "int",
+          "$default": 3,
+          "$min": 0,
+          "$help": "Shadow render power (quality)"
+        },
+        "sharp": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Sharp window shadows"
+        },
+        "color": {
+          "$type": "str",
+          "$default": "rgba(00000050)",
+          "$help": "Shadow color with alpha"
+        },
+        "offset": {
+          "x": {
+            "$type": "int",
+            "$default": 1,
+            "$help": "Shadow horizontal offset"
+          },
+          "y": {
+            "$type": "int",
+            "$default": 1,
+            "$help": "Shadow vertical offset"
+          }
+        },
+        "scale": {
+          "$type": "float",
+          "$default": 1.0,
+          "$help": "Shadow scale factor"
+        }
+      },
+      "dim": {
+        "inactive": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Dim inactive windows"
+        },
+        "strength": {
+          "$type": "float",
+          "$default": 0.1,
+          "$min": 0.0,
+          "$max": 1.0,
+          "$help": "Dim strength for inactive windows"
+        },
+        "special": {
+          "$type": "float",
+          "$default": 0.1,
+          "$min": 0.0,
+          "$max": 1.0,
+          "$help": "Dim strength for special workspaces"
+        },
+        "around": {
+          "$type": "float",
+          "$default": 0.4,
+          "$min": 0.0,
+          "$max": 1.0,
+          "$help": "Dim amount around the active window"
+        }
+      },
+      "blur": {
+        "enabled": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Enable background blur"
+        },
+        "size": {
+          "$type": "int",
+          "$default": 8,
+          "$min": 0,
+          "$help": "Blur size"
+        },
+        "passes": {
+          "$type": "int",
+          "$default": 3,
+          "$min": 0,
+          "$help": "Number of blur passes (quality)"
+        },
+        "ignore_opacity": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Ignore window opacity when blurring"
+        },
+        "new_optimizations": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Use new blur optimizations"
+        },
+        "xray": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "X-ray mode blur (only blurs behind foreground)"
+        },
+        "noise": {
+          "$type": "float",
+          "$default": 0.07,
+          "$help": "Blur noise amount"
+        },
+        "contrast": {
+          "$type": "float",
+          "$default": 1.2,
+          "$help": "Blur contrast"
+        },
+        "brightness": {
+          "$type": "float",
+          "$default": 1.7,
+          "$help": "Blur brightness"
+        },
+        "vibrancy": {
+          "$type": "float",
+          "$default": 0.8,
+          "$help": "Blur vibrancy"
+        },
+        "vibrancy_darkness": {
+          "$type": "float",
+          "$default": 0.4,
+          "$help": "Blur vibrancy darkness"
+        },
+        "special": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Enable blur on special workspaces"
+        },
+        "popups": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Enable blur on popups"
+        },
+        "popups_ignorealpha": {
+          "$type": "float",
+          "$default": 0.2,
+          "$help": "Alpha threshold for popup blur ignore"
+        }
+      }
+    },
+    "animations": {
+      "enabled": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable window animations"
+      }
+    },
+    "dwindle": {
+      "preserve_split": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Preserve split direction when moving windows"
+      },
+      "force_split": {
+        "$type": "int",
+        "$default": 2,
+        "$min": 0,
+        "$help": "Force split behavior (0=never, 1=always, 2=auto)"
+      },
+      "precise_mouse_move": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Precise mouse movement tracking for dwindle"
+      }
+    },
+    "master": {
+      "$ui_label": "Master Layout",
+      "$help": "Master-stack layout settings (not yet consumed by Lua modules)",
+      "mfact": {
+        "$type": "float",
+        "$default": 0.5,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Master layout: master area factor"
+      },
+      "smart_count": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Master layout: smart count threshold"
+      },
+      "orientation": {
+        "$type": "enum",
+        "$default": "center",
+        "$values": [
+          "left",
+          "center",
+          "right"
+        ],
+        "$help": "Master layout: orientation"
+      },
+      "new_status": {
+        "$type": "enum",
+        "$default": "slave",
+        "$values": [
+          "slave",
+          "master"
+        ],
+        "$help": "Master layout: new window placement"
+      },
+      "always_center_master": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Master layout: always center master window"
+      },
+      "smart_resizing": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Master layout: smart resizing"
+      },
+      "drop_at_cursor": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Master layout: drop windows at cursor position"
+      },
+      "new_on_active": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Master layout: open new windows on active workspace"
+      },
+      "new_on_top": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Master layout: open new windows on top"
+      }
+    }
+  },
+  "display": {
+    "$ui_label": "Display",
+    "$icon": "monitor",
+    "monitors": {
+      "$is_machine_local": true,
+      "$help": "Monitor configuration (machine-specific)",
+      "$items": {
+        "output": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Monitor name. Empty string = catch-all for unspecified outputs"
+        },
+        "mode": {
+          "$type": "str | 'preferred'",
+          "$default": "preferred",
+          "$help": "Display mode string"
+        },
+        "position": {
+          "$type": "str",
+          "$default": "auto",
+          "$examples": [
+            "auto",
+            "auto-left",
+            "0x0",
+            "1920x0"
+          ],
+          "$help": "Monitor position"
+        },
+        "scale": {
+          "$type": "float | 'auto'",
+          "$default": 1.0,
+          "$min": 0.5,
+          "$max": 5.0,
+          "$help": "Display scale factor"
+        },
+        "mirror": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Mirror another output"
+        },
+        "disabled": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Disable this output"
+        },
+        "vrr": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$max": 2,
+          "$help": "VRR mode (0=off, 1=on, 2=always)"
+        }
+      },
+      "$defaults": [
+        {
+          "output": "",
+          "mode": "preferred",
+          "position": "auto",
+          "scale": 1.0,
+          "mirror": "",
+          "disabled": false,
+          "vrr": 0
+        }
+      ]
+    },
+    "misc": {
+      "force_default_wallpaper": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 2,
+        "$help": "Force default wallpaper (0=off, 1=on, 2=on with dim)"
+      },
+      "disable_hyprland_logo": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable the Hyprland logo on empty workspaces"
+      },
+      "disable_splash_rendering": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Disable splash text rendering"
+      },
+      "initial_workspace_tracking": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Initial workspace tracking mode"
+      },
+      "enable_anr_dialog": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Enable ANR (Application Not Responding) dialog"
+      }
+    },
+    "render": {
+      "$ui_label": "Rendering",
+      "$help": "Rendering settings (not yet consumed by Lua modules)",
+      "direct_scanout": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Enable direct scanout for fullscreen windows"
+      },
+      "explicit_sync": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 2,
+        "$help": "Explicit sync mode"
+      },
+      "explicit_sync_khz": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Explicit sync KHz"
+      },
+      "explicit_sync_use_begin": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Use explicit sync begin"
+      },
+      "explicit_sync_use_end": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Use explicit sync end"
+      },
+      "explicit_sync_use_finish": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Use explicit sync finish"
+      }
+    },
+    "xwayland": {
+      "$ui_label": "XWayland",
+      "$help": "XWayland settings (not yet consumed by Lua modules)",
+      "use_nearest_neighbor": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Use nearest neighbor filtering for XWayland"
+      },
+      "force_zero_scaling": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Force zero scaling for XWayland"
+      }
+    },
+    "opengl": {
+      "$ui_label": "OpenGL",
+      "$help": "OpenGL settings (not yet consumed by Lua modules)",
+      "nvidia_anti_flicker": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "NVIDIA anti-flicker workaround"
+      },
+      "force_hyprland_glx": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Force Hyprland GLX context"
+      },
+      "glx_context_type": {
+        "$type": "enum",
+        "$default": "attrib",
+        "$values": [
+          "attrib",
+          "class"
+        ],
+        "$help": "GLX context type"
+      }
+    }
+  },
+  "input": {
+    "$ui_label": "Input",
+    "$icon": "keyboard",
+    "input": {
+      "kb_layout": {
+        "$type": "str",
+        "$default": "us",
+        "$help": "Keyboard layout"
+      },
+      "numlock_by_default": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable numlock on startup"
+      },
+      "accel_profile": {
+        "$type": "str",
+        "$default": "flat",
+        "$examples": [
+          "flat",
+          "adaptive"
+        ],
+        "$help": "Pointer acceleration profile"
+      },
+      "scroll_method": {
+        "$type": "str",
+        "$default": "2fg",
+        "$examples": [
+          "2fg",
+          "button",
+          "edge"
+        ],
+        "$help": "Scroll method"
+      },
+      "follow_mouse": {
+        "$type": "int",
+        "$default": 1,
+        "$min": 0,
+        "$max": 3,
+        "$help": "Mouse focus follow mode"
+      },
+      "special_fallthrough": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Allow input fallthrough to special workspaces"
+      },
+      "sensitivity": {
+        "$type": "float",
+        "$default": 0,
+        "$min": -1,
+        "$max": 1,
+        "$help": "Pointer sensitivity"
+      },
+      "touchpad": {
+        "disable_while_typing": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Disable touchpad while typing"
+        },
+        "natural_scroll": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Natural scrolling direction"
+        },
+        "scroll_factor": {
+          "$type": "float",
+          "$default": 0.7,
+          "$min": 0.1,
+          "$max": 5.0,
+          "$help": "Touchpad scroll speed factor"
+        }
+      },
+      "tablet": {
+        "output": {
+          "$type": "str",
+          "$default": "current",
+          "$help": "Tablet output binding"
+        }
+      }
+    },
+    "gestures": {
+      "workspace_swipe_distance": {
+        "$type": "int",
+        "$default": 300,
+        "$min": 0,
+        "$help": "Workspace swipe activation distance"
+      },
+      "workspace_swipe_touch": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable workspace swipe on touchscreen"
+      },
+      "workspace_swipe_invert": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Invert workspace swipe direction"
+      },
+      "workspace_swipe_min_speed_to_force": {
+        "$type": "int",
+        "$default": 5,
+        "$min": 1,
+        "$help": "Minimum swipe speed to force workspace change"
+      },
+      "workspace_swipe_cancel_ratio": {
+        "$type": "float",
+        "$default": 0.5,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Swipe cancel ratio threshold"
+      },
+      "workspace_swipe_direction_lock": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Lock workspace swipe to initial direction"
+      },
+      "workspace_swipe_forever": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Allow infinite workspace swipe wrapping"
+      }
+    },
+    "gesture_specs": {
+      "$help": "Custom touchpad gesture bindings",
+      "$items": {
+        "fingers": {
+          "$type": "int",
+          "$default": 3,
+          "$help": "Number of fingers for gesture"
+        },
+        "direction": {
+          "$type": "enum",
+          "$default": "left",
+          "$values": [
+            "left",
+            "right",
+            "up",
+            "down",
+            "horizontal"
+          ],
+          "$help": "Gesture direction"
+        },
+        "action": {
+          "$type": "enum",
+          "$default": "tctl",
+          "$values": [
+            "workspace",
+            "tctl"
+          ],
+          "$help": "Action type"
+        },
+        "command": {
+          "$type": "str",
+          "$default": "",
+          "$help": "tctl subcommand (only used when action is 'tctl')"
+        }
+      },
+      "$defaults": [
+        {
+          "fingers": 4,
+          "direction": "horizontal",
+          "action": "workspace",
+          "command": ""
+        },
+        {
+          "fingers": 3,
+          "direction": "left",
+          "action": "tctl",
+          "command": "gesture left"
+        },
+        {
+          "fingers": 3,
+          "direction": "right",
+          "action": "tctl",
+          "command": "gesture right"
+        },
+        {
+          "fingers": 3,
+          "direction": "up",
+          "action": "tctl",
+          "command": "gesture up"
+        },
+        {
+          "fingers": 3,
+          "direction": "down",
+          "action": "tctl",
+          "command": "gesture down"
+        }
+      ]
+    },
+    "devices": {
+      "$ui_label": "Per-Device Input",
+      "$is_machine_local": true,
+      "$help": "Per-device input overrides (machine-specific)",
+      "$items": {
+        "name": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Device name from hyprctl devices"
+        },
+        "accel_profile": {
+          "$type": "str",
+          "$default": "flat",
+          "$help": "Device acceleration profile"
+        },
+        "sensitivity": {
+          "$type": "float",
+          "$default": 0,
+          "$min": -1,
+          "$max": 1,
+          "$help": "Device sensitivity"
+        },
+        "natural_scroll": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Natural scrolling for this device"
+        },
+        "disable_while_typing": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Disable while typing for this device"
+        },
+        "tap_to_click": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Tap-to-click for this device"
+        },
+        "scroll_factor": {
+          "$type": "float",
+          "$default": 1.0,
+          "$help": "Scroll speed factor for this device"
+        },
+        "repeat_rate": {
+          "$type": "int",
+          "$default": 25,
+          "$help": "Key repeat rate for this device"
+        },
+        "repeat_delay": {
+          "$type": "int",
+          "$default": 300,
+          "$help": "Key repeat delay for this device"
+        }
+      },
+      "$defaults": []
+    },
+    "group": {
+      "$ui_label": "Window Grouping",
+      "$help": "Window grouping/tabbing settings (not yet consumed by Lua modules)",
+      "insert_after_current": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Insert new windows after current in group"
+      },
+      "auto_group": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Auto-group new windows"
+      },
+      "merge_group": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Merge groups together"
+      },
+      "open_new_window": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Open new window when group is focused"
+      },
+      "group_on_movetoworkspace": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Group when moving to workspace"
+      },
+      "focus_removed_window": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Focus the removed window from group"
+      },
+      "dragging_toggles": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Dragging toggles group membership"
+      },
+      "groupbar": {
+        "enabled": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Enable group bar"
+        },
+        "font_size": {
+          "$type": "int",
+          "$default": 8,
+          "$help": "Group bar font size"
+        },
+        "gradients": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Group bar gradients"
+        },
+        "height": {
+          "$type": "int",
+          "$default": 14,
+          "$help": "Group bar height"
+        },
+        "priority": {
+          "$type": "enum",
+          "$default": "none",
+          "$values": [
+            "none",
+            "title",
+            "order"
+          ],
+          "$help": "Group bar priority mode"
+        },
+        "render_titles": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Render window titles in group bar"
+        },
+        "scrolling": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Scroll to switch group windows"
+        },
+        "text_color": {
+          "$type": "str",
+          "$default": "rgb(ffffff)",
+          "$help": "Group bar text color"
+        }
+      }
+    }
+  },
+  "environment": {
+    "$ui_label": "Environment",
+    "$icon": "settings",
+    "cursor": {
+      "theme": {
+        "$type": "str",
+        "$default": "Bibata-Modern-Classic",
+        "$help": "Cursor theme name"
+      },
+      "size": {
+        "$type": "int",
+        "$default": 24,
+        "$min": 16,
+        "$max": 96,
+        "$help": "Cursor size in pixels"
+      },
+      "no_hardware_cursors": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Disable hardware cursors (use software rendering)"
+      },
+      "zoom_factor": {
+        "$type": "float",
+        "$default": 1.0,
+        "$min": 1.0,
+        "$max": 5.0,
+        "$help": "Cursor zoom factor (not yet consumed)"
+      },
+      "zoom_rigid": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Rigid cursor zoom (not yet consumed)"
+      },
+      "enable_hyprcursor": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable Hyprcursor support (not yet consumed)"
+      }
+    },
+    "env": {
+      "$help": "Environment variables set before Hyprland starts",
+      "$items": {
+        "$type": "str"
+      },
+      "$defaults": {
+        "XCURSOR_THEME": "Bibata-Modern-Classic",
+        "XCURSOR_SIZE": "24",
+        "XDG_CURRENT_DESKTOP": "Hyprland",
+        "ELECTRON_OZONE_PLATFORM_HINT": "auto",
+        "QT_QPA_PLATFORMTHEME": "qt6ct",
+        "QT_QPA_PLATFORM": "wayland",
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION": "1",
+        "GDK_USE_PORTAL": "1",
+        "GTK_ICON_THEME": "material-actions"
+      }
+    },
+    "autostart": {
+      "$help": "Commands to run on Hyprland startup",
+      "$items": {
+        "$type": "str"
+      },
+      "$defaults": [
+        "systemctl --user start hyprpolkitagent",
+        "awww-daemon",
+        "/bin/kdeconnectd",
+        "wl-paste --watch cliphist store",
+        "hyprsunset",
+        "cd ~/.config/matugen/materialized-web && uv run app.py"
+      ]
+    },
+    "programs": {
+      "terminal": {
+        "$type": "str",
+        "$default": "foot zellij-session-picker",
+        "$help": "Terminal emulator command"
+      },
+      "quickterm": {
+        "$type": "str",
+        "$default": "foot zellij attach -c quickterm",
+        "$help": "Quick terminal (scratchpad) command"
+      },
+      "file_manager": {
+        "$type": "str",
+        "$default": "dolphin",
+        "$help": "File manager command"
+      },
+      "browser": {
+        "$type": "str",
+        "$default": "firefox",
+        "$help": "Web browser command"
+      }
+    },
+    "keys": {
+      "modifiers": {
+        "main": {
+          "$type": "str",
+          "$default": "SUPER",
+          "$help": "Primary modifier key"
+        },
+        "mut": {
+          "$type": "str",
+          "$default": "SHIFT",
+          "$help": "Mutation modifier key"
+        },
+        "scope": {
+          "$type": "str",
+          "$default": "CTRL",
+          "$help": "Scope modifier key"
+        },
+        "sys": {
+          "$type": "str",
+          "$default": "ALT",
+          "$help": "System modifier key"
+        }
+      },
+      "leader": {
+        "$type": "str",
+        "$default": "SUPER + SPACE",
+        "$help": "Leader key chord for submap activation"
+      }
+    }
+  },
+  "rules": {
+    "$ui_label": "Rules",
+    "$icon": "rule",
+    "window_rules": {
+      "suppress_maximize": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Suppress maximize requests from all applications"
+      },
+      "fullscreen_classes": {
+        "$help": "Window classes that should start fullscreen",
+        "$items": {
+          "$type": "str"
+        },
+        "$defaults": [
+          "steam_app*",
+          "factorio*",
+          "Terraria*"
+        ]
+      },
+      "additional": {
+        "$help": "Additional custom window rules",
+        "$items": {
+          "$type": "obj"
+        },
+        "$defaults": []
+      }
+    },
+    "layer_rules": {
+      "no_anim_namespaces": {
+        "$help": "Layer surface namespaces to exclude from animations",
+        "$items": {
+          "$type": "str"
+        },
+        "$defaults": [
+          "^quickshell(.*)?$",
+          "selection"
+        ]
+      },
+      "animation_overrides": {
+        "$help": "Per-namespace animation overrides for layer surfaces",
+        "$items": {
+          "namespace": {
+            "$type": "str",
+            "$default": ""
+          },
+          "animation": {
+            "$type": "str",
+            "$default": ""
+          }
+        },
+        "$defaults": [
+          {
+            "namespace": "wvkbd",
+            "animation": "slide bottom"
+          }
+        ]
+      }
+    },
+    "workspace_rules": {
+      "$help": "Per-workspace configuration rules",
+      "$items": {
+        "workspace": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Workspace identifier (e.g. 'special:quickterm', '1', 'name:dev')"
+        },
+        "gaps_out": {
+          "$type": "obj",
+          "$help": "Per-workspace outer gaps override",
+          "top": {
+            "$type": "int",
+            "$default": 0
+          },
+          "left": {
+            "$type": "int",
+            "$default": 0
+          },
+          "bottom": {
+            "$type": "int",
+            "$default": 0
+          },
+          "right": {
+            "$type": "int",
+            "$default": 0
+          }
+        },
+        "on_created_empty": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Command to run when workspace is created empty"
+        }
+      },
+      "$defaults": [
+        {
+          "workspace": "special:quickterm",
+          "gaps_out": {
+            "top": 150,
+            "left": 30,
+            "bottom": 0,
+            "right": 30
+          }
+        }
+      ]
+    }
+  },
+  "advanced": {
+    "$ui_label": "Advanced",
+    "$icon": "tune",
+    "bezier_curves": {
+      "$help": "Named bezier curves for animation easing",
+      "$items": {
+        "type": {
+          "$type": "str",
+          "$default": "bezier",
+          "$help": "Curve type"
+        },
+        "points": {
+          "$type": "array",
+          "$default": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "$help": "2 control points: [[x1, y1], [x2, y2]]"
+        }
+      },
+      "$defaults": {
+        "bounce": {
+          "type": "bezier",
+          "points": [
+            [
+              0.38,
+              1.21
+            ],
+            [
+              0.22,
+              1.0
+            ]
+          ]
+        },
+        "smooth-in": {
+          "type": "bezier",
+          "points": [
+            [
+              0.3,
+              0.0
+            ],
+            [
+              0.8,
+              0.15
+            ]
+          ]
+        }
+      }
+    },
+    "animation_entries": {
+      "$help": "Per-leaf animation settings",
+      "$items": {
+        "enabled": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Enable this animation"
+        },
+        "speed": {
+          "$type": "float",
+          "$default": 3,
+          "$help": "Animation speed (higher = faster)"
+        },
+        "bezier": {
+          "$type": "str",
+          "$default": "bounce",
+          "$help": "Bezier curve name from bezier_curves"
+        },
+        "style": {
+          "$type": "str",
+          "$default": "slide",
+          "$help": "Animation style"
+        }
+      },
+      "$defaults": {
+        "windows": {
+          "enabled": true,
+          "speed": 3,
+          "bezier": "bounce",
+          "style": "slide"
+        },
+        "windowsOut": {
+          "enabled": true,
+          "speed": 3,
+          "bezier": "bounce",
+          "style": "slide"
+        },
+        "layers": {
+          "enabled": true,
+          "speed": 2,
+          "bezier": "bounce",
+          "style": "slide top"
+        },
+        "layersOut": {
+          "enabled": true,
+          "speed": 2,
+          "bezier": "smooth-in",
+          "style": "slide top"
+        },
+        "workspaces": {
+          "enabled": true,
+          "speed": 3.5,
+          "bezier": "bounce",
+          "style": "slide"
+        },
+        "specialWorkspace": {
+          "enabled": true,
+          "speed": 3,
+          "bezier": "bounce",
+          "style": "slidevert"
+        },
+        "specialWorkspaceOut": {
+          "enabled": true,
+          "speed": 2,
+          "bezier": "smooth-in",
+          "style": "slidevert"
+        }
+      }
+    },
+    "binds": {
+      "$ui_label": "Binds",
+      "$help": "Global binding behaviour settings (not yet consumed by Lua modules)",
+      "allow_workspace_cycles": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Allow workspace cycling with scroll"
+      },
+      "workspace_back_and_forth": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Toggle between recent workspaces"
+      },
+      "focus_preferred_method": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 1,
+        "$help": "Preferred focus method"
+      },
+      "ignore_auto_repeat": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Ignore key auto-repeat for binds"
+      },
+      "scroll_event_delay": {
+        "$type": "int",
+        "$default": 300,
+        "$help": "Scroll event delay in milliseconds"
+      },
+      "mouse_move_uses_keyboard_focus": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Mouse move uses keyboard focus"
+      }
+    }
+  }
+}
