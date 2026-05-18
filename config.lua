@@ -42,6 +42,32 @@ hl.config({
 })
 
 -- ====================================================================
+-- RENDER
+-- ====================================================================
+
+hl.config({
+  render = {
+    cm_auto_hdr = settings.render.cm_auto_hdr,
+    cm_enabled = settings.render.cm_enabled,
+    cm_sdr_eotf = settings.render.cm_sdr_eotf,
+    commit_timing_enabled = settings.render.commit_timing_enabled,
+    ctm_animation = settings.render.ctm_animation,
+    direct_scanout = settings.render.direct_scanout,
+    expand_undersized_textures = settings.render.expand_undersized_textures,
+    fp16_sdr_tf = settings.render.fp16_sdr_tf,
+    icc_vcgt_enabled = settings.render.icc_vcgt_enabled,
+    keep_unmodified_copy = settings.render.keep_unmodified_copy,
+    new_render_scheduling = settings.render.new_render_scheduling,
+    non_shader_cm = settings.render.non_shader_cm,
+    non_shader_cm_interop = settings.render.non_shader_cm_interop,
+    send_content_type = settings.render.send_content_type,
+    use_fp16 = settings.render.use_fp16,
+    use_shader_blur_blend = settings.render.use_shader_blur_blend,
+    xp_mode = settings.render.xp_mode,
+  },
+})
+
+-- ====================================================================
 -- MAIN LOOK AND FEEL
 -- ====================================================================
 
