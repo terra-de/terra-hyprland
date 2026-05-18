@@ -12,6 +12,9 @@ local utils = require("utils")
 hl.config({
   cursor = {
     no_hardware_cursors = settings.cursor.no_hardware_cursors,
+    zoom_factor = settings.cursor.zoom_factor,
+    zoom_rigid = settings.cursor.zoom_rigid,
+    enable_hyprcursor = settings.cursor.enable_hyprcursor,
   },
 })
 
