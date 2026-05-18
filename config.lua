@@ -19,6 +19,19 @@ hl.config({
 })
 
 -- ====================================================================
+-- XWAYLAND
+-- ====================================================================
+
+hl.config({
+  xwayland = {
+    enabled = settings.xwayland.enabled,
+    use_nearest_neighbor = settings.xwayland.use_nearest_neighbor,
+    force_zero_scaling = settings.xwayland.force_zero_scaling,
+    create_abstract_socket = settings.xwayland.create_abstract_socket,
+  },
+})
+
+-- ====================================================================
 -- MAIN LOOK AND FEEL
 -- ====================================================================
 

@@ -479,7 +479,12 @@
     },
     "xwayland": {
       "$ui_label": "XWayland",
-      "$help": "XWayland settings (not yet consumed by Lua modules)",
+      "$help": "XWayland settings",
+      "enabled": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable XWayland"
+      },
       "use_nearest_neighbor": {
         "$type": "bool",
         "$default": true,
@@ -489,6 +494,11 @@
         "$type": "bool",
         "$default": false,
         "$help": "Force zero scaling for XWayland"
+      },
+      "create_abstract_socket": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Create an abstract XWayland socket"
       }
     },
     "opengl": {
