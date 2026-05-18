@@ -167,6 +167,23 @@ hl.config({
     workspace_swipe_direction_lock = settings.gestures.workspace_swipe_direction_lock,
     workspace_swipe_forever = settings.gestures.workspace_swipe_forever,
   },
+
+  binds = {
+    allow_workspace_cycles = settings.binds.allow_workspace_cycles,
+    workspace_back_and_forth = settings.binds.workspace_back_and_forth,
+    focus_preferred_method = settings.binds.focus_preferred_method,
+    scroll_event_delay = settings.binds.scroll_event_delay,
+    allow_pin_fullscreen = settings.binds.allow_pin_fullscreen,
+    disable_keybind_grabbing = settings.binds.disable_keybind_grabbing,
+    drag_threshold = settings.binds.drag_threshold,
+    hide_special_on_workspace_change = settings.binds.hide_special_on_workspace_change,
+    ignore_group_lock = settings.binds.ignore_group_lock,
+    movefocus_cycles_fullscreen = settings.binds.movefocus_cycles_fullscreen,
+    movefocus_cycles_groupfirst = settings.binds.movefocus_cycles_groupfirst,
+    pass_mouse_when_bound = settings.binds.pass_mouse_when_bound,
+    window_direction_monitor_fallback = settings.binds.window_direction_monitor_fallback,
+    workspace_center_on = settings.binds.workspace_center_on,
+  },
 })
 
 -- ====================================================================

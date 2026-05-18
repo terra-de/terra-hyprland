@@ -1195,7 +1195,7 @@
     },
     "binds": {
       "$ui_label": "Binds",
-      "$help": "Global binding behaviour settings (not yet consumed by Lua modules)",
+      "$help": "Global binding behaviour settings",
       "allow_workspace_cycles": {
         "$type": "bool",
         "$default": true,
@@ -1213,20 +1213,60 @@
         "$max": 1,
         "$help": "Preferred focus method"
       },
-      "ignore_auto_repeat": {
-        "$type": "bool",
-        "$default": false,
-        "$help": "Ignore key auto-repeat for binds"
-      },
       "scroll_event_delay": {
         "$type": "int",
         "$default": 300,
         "$help": "Scroll event delay in milliseconds"
       },
-      "mouse_move_uses_keyboard_focus": {
+      "allow_pin_fullscreen": {
         "$type": "bool",
         "$default": false,
-        "$help": "Mouse move uses keyboard focus"
+        "$help": "Allow pinning windows in fullscreen"
+      },
+      "disable_keybind_grabbing": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable keybind grabbing by XWayland clients"
+      },
+      "drag_threshold": {
+        "$type": "int",
+        "$default": 10,
+        "$help": "Drag threshold in pixels"
+      },
+      "hide_special_on_workspace_change": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Hide special workspace on workspace change"
+      },
+      "ignore_group_lock": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Ignore group lock for binds"
+      },
+      "movefocus_cycles_fullscreen": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Move focus cycles through fullscreen windows"
+      },
+      "movefocus_cycles_groupfirst": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Move focus cycles through group first"
+      },
+      "pass_mouse_when_bound": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Pass mouse events when a mouse bind is active"
+      },
+      "window_direction_monitor_fallback": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Fallback to next monitor when no window in direction"
+      },
+      "workspace_center_on": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Monitor index to center new workspaces on (0 = no preference)"
       }
     }
   }
