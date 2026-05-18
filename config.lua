@@ -251,3 +251,11 @@ for _, spec in ipairs(settings.gesture_specs) do
     hl.gesture({ fingers = spec.fingers, direction = spec.direction, action = spec.action })
   end
 end
+
+-- ====================================================================
+-- DEVICES  (per-device input overrides, from settings)
+-- ====================================================================
+
+for _, dev in ipairs(settings.devices) do
+  hl.device(dev)
+end
