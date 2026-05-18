@@ -273,7 +273,7 @@
     },
     "master": {
       "$ui_label": "Master Layout",
-      "$help": "Master-stack layout settings (not yet consumed by Lua modules)",
+      "$help": "Master-stack layout settings",
       "mfact": {
         "$type": "float",
         "$default": 0.5,
@@ -281,54 +281,69 @@
         "$max": 1.0,
         "$help": "Master layout: master area factor"
       },
-      "smart_count": {
-        "$type": "int",
-        "$default": 0,
-        "$help": "Master layout: smart count threshold"
-      },
       "orientation": {
         "$type": "enum",
         "$default": "center",
-        "$values": [
-          "left",
-          "center",
-          "right"
-        ],
+        "$values": ["left", "center", "right"],
         "$help": "Master layout: orientation"
       },
       "new_status": {
         "$type": "enum",
         "$default": "slave",
-        "$values": [
-          "slave",
-          "master"
-        ],
-        "$help": "Master layout: new window placement"
+        "$values": ["slave", "master"],
+        "$help": "Master layout: new window placement status"
       },
-      "always_center_master": {
+      "new_on_active": {
+        "$type": "str",
+        "$default": "false",
+        "$help": "Master layout: where to place new windows ('master', 'slave', or 'false')"
+      },
+      "new_on_top": {
         "$type": "bool",
         "$default": false,
-        "$help": "Master layout: always center master window"
-      },
-      "smart_resizing": {
-        "$type": "bool",
-        "$default": true,
-        "$help": "Master layout: smart resizing"
+        "$help": "Master layout: open new windows on top"
       },
       "drop_at_cursor": {
         "$type": "bool",
         "$default": true,
         "$help": "Master layout: drop windows at cursor position"
       },
-      "new_on_active": {
+      "smart_resizing": {
         "$type": "bool",
-        "$default": false,
-        "$help": "Master layout: open new windows on active workspace"
+        "$default": true,
+        "$help": "Master layout: smart resizing"
       },
-      "new_on_top": {
+      "allow_small_split": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Master layout: allow small split sizes"
+      },
+      "always_keep_position": {
         "$type": "bool",
         "$default": false,
-        "$help": "Master layout: open new windows on top"
+        "$help": "Master layout: always keep master position"
+      },
+      "center_ignores_reserved": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Master layout: centering ignores reserved area"
+      },
+      "center_master_fallback": {
+        "$type": "str",
+        "$default": "master",
+        "$help": "Master layout: fallback when centering master"
+      },
+      "slave_count_for_center_master": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Master layout: slave count threshold for centering master"
+      },
+      "special_scale_factor": {
+        "$type": "float",
+        "$default": 0.8,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Master layout: special workspace scale factor"
       }
     }
   },

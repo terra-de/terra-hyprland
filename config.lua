@@ -99,6 +99,22 @@ hl.config({
     precise_mouse_move = settings.dwindle.precise_mouse_move,
   },
 
+  master = {
+    mfact = settings.master.mfact,
+    orientation = settings.master.orientation,
+    new_status = settings.master.new_status,
+    new_on_active = settings.master.new_on_active,
+    new_on_top = settings.master.new_on_top,
+    drop_at_cursor = settings.master.drop_at_cursor,
+    smart_resizing = settings.master.smart_resizing,
+    allow_small_split = settings.master.allow_small_split,
+    always_keep_position = settings.master.always_keep_position,
+    center_ignores_reserved = settings.master.center_ignores_reserved,
+    center_master_fallback = settings.master.center_master_fallback,
+    slave_count_for_center_master = settings.master.slave_count_for_center_master,
+    special_scale_factor = settings.master.special_scale_factor,
+  },
+
   input = {
     kb_layout = settings.input.kb_layout,
     numlock_by_default = settings.input.numlock_by_default,
