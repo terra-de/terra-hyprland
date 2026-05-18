@@ -68,22 +68,77 @@
         "$default": 0,
         "$help": "Resize corner"
       },
-      "float_gaps": { "$type": "int", "$default": 0, "$min": 0, "$help": "Float window gaps" },
-      "hover_icon_on_border": { "$type": "bool", "$default": false, "$help": "Show hover icon on window borders" },
-      "locale": { "$type": "str", "$default": "", "$help": "Locale for Hyprland" },
-      "modal_parent_blocking": { "$type": "bool", "$default": false, "$help": "Block input to parent of modal windows" },
+      "float_gaps": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$help": "Float window gaps"
+      },
+      "hover_icon_on_border": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Show hover icon on window borders"
+      },
+      "locale": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Locale for Hyprland"
+      },
+      "modal_parent_blocking": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Block input to parent of modal windows"
+      },
       "col": {
-        "active_border": { "$type": "str", "$default": "rgb(c4c4c4)", "$help": "Active window border color (palette-mapped)" },
-        "inactive_border": { "$type": "str", "$default": "rgb(333333)", "$help": "Inactive window border color (palette-mapped)" },
-        "nogroup_border": { "$type": "str", "$default": "rgb(333333)", "$help": "Non-group window border color (palette-mapped)" },
-        "nogroup_border_active": { "$type": "str", "$default": "rgb(ffffff)", "$help": "Active non-group window border color (palette-mapped)" }
+        "active_border": {
+          "$type": "str",
+          "$default": "rgb(c4c4c4)",
+          "$help": "Active window border color (palette-mapped)"
+        },
+        "inactive_border": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Inactive window border color (palette-mapped)"
+        },
+        "nogroup_border": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Non-group window border color (palette-mapped)"
+        },
+        "nogroup_border_active": {
+          "$type": "str",
+          "$default": "rgb(ffffff)",
+          "$help": "Active non-group window border color (palette-mapped)"
+        }
       },
       "snap": {
-        "enabled": { "$type": "bool", "$default": false, "$help": "Enable window snapping" },
-        "border_overlap": { "$type": "bool", "$default": false, "$help": "Snap windows with border overlap" },
-        "monitor_gap": { "$type": "int", "$default": 0, "$min": 0, "$help": "Snap gap to monitor edges" },
-        "respect_gaps": { "$type": "bool", "$default": true, "$help": "Reserve gap space when snapping" },
-        "window_gap": { "$type": "int", "$default": 0, "$min": 0, "$help": "Snap gap between windows" }
+        "enabled": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Enable window snapping"
+        },
+        "border_overlap": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Snap windows with border overlap"
+        },
+        "monitor_gap": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Snap gap to monitor edges"
+        },
+        "respect_gaps": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Reserve gap space when snapping"
+        },
+        "window_gap": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Snap gap between windows"
+        }
       }
     },
     "decoration": {
@@ -142,7 +197,11 @@
           "$default": "rgba(00000050)",
           "$help": "Shadow color with alpha"
         },
-        "color_inactive": { "$type": "str", "$default": "rgba(00000000)", "$help": "Inactive window shadow color with alpha" },
+        "color_inactive": {
+          "$type": "str",
+          "$default": "rgba(00000000)",
+          "$help": "Inactive window shadow color with alpha"
+        },
         "offset": {
           "x": {
             "$type": "int",
@@ -188,7 +247,13 @@
           "$max": 1.0,
           "$help": "Dim amount around the active window"
         },
-        "modal": { "$type": "float", "$default": 0.0, "$min": 0.0, "$max": 1.0, "$help": "Dim strength for modal windows" }
+        "modal": {
+          "$type": "float",
+          "$default": 0.0,
+          "$min": 0.0,
+          "$max": 1.0,
+          "$help": "Dim strength for modal windows"
+        }
       },
       "blur": {
         "enabled": {
@@ -263,18 +328,60 @@
           "$default": 0.2,
           "$help": "Alpha threshold for popup blur ignore"
         },
-        "input_methods": { "$type": "bool", "$default": false, "$help": "Enable blur under input methods" },
-        "input_methods_ignorealpha": { "$type": "float", "$default": 0.2, "$help": "Alpha threshold for input method blur ignore" }
+        "input_methods": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Enable blur under input methods"
+        },
+        "input_methods_ignorealpha": {
+          "$type": "float",
+          "$default": 0.2,
+          "$help": "Alpha threshold for input method blur ignore"
+        }
       },
-      "border_part_of_window": { "$type": "bool", "$default": false, "$help": "Count border as part of the window" },
-      "rounding_power": { "$type": "float", "$default": 2.0, "$help": "Rounding power (curve shape)" },
-      "screen_shader": { "$type": "str", "$default": "", "$help": "Custom screen shader file path" },
+      "border_part_of_window": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Count border as part of the window"
+      },
+      "rounding_power": {
+        "$type": "float",
+        "$default": 2.0,
+        "$help": "Rounding power (curve shape)"
+      },
+      "screen_shader": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Custom screen shader file path"
+      },
       "glow": {
-        "enabled": { "$type": "bool", "$default": false, "$help": "Enable glow effect on windows" },
-        "range": { "$type": "int", "$default": 0, "$min": 0, "$help": "Glow range in pixels" },
-        "color": { "$type": "str", "$default": "rgba(00000000)", "$help": "Glow color with alpha" },
-        "color_inactive": { "$type": "str", "$default": "rgba(00000000)", "$help": "Inactive window glow color with alpha" },
-        "render_power": { "$type": "int", "$default": 1, "$min": 0, "$help": "Glow render power (quality)" }
+        "enabled": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Enable glow effect on windows"
+        },
+        "range": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Glow range in pixels"
+        },
+        "color": {
+          "$type": "str",
+          "$default": "rgba(00000000)",
+          "$help": "Glow color with alpha"
+        },
+        "color_inactive": {
+          "$type": "str",
+          "$default": "rgba(00000000)",
+          "$help": "Inactive window glow color with alpha"
+        },
+        "render_power": {
+          "$type": "int",
+          "$default": 1,
+          "$min": 0,
+          "$help": "Glow render power (quality)"
+        }
       }
     },
     "animations": {
@@ -283,20 +390,73 @@
         "$default": true,
         "$help": "Enable window animations"
       },
-      "workspace_wraparound": { "$type": "bool", "$default": false, "$help": "Wrap workspace animations around edges" }
+      "workspace_wraparound": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Wrap workspace animations around edges"
+      }
     },
     "dwindle": {
-      "preserve_split": { "$type": "bool", "$default": true, "$help": "Preserve split direction when moving windows" },
-      "force_split": { "$type": "int", "$default": 2, "$min": 0, "$help": "Force split behavior (0=never, 1=always, 2=auto)" },
-      "precise_mouse_move": { "$type": "bool", "$default": true, "$help": "Precise mouse movement tracking for dwindle" },
-      "smart_split": { "$type": "bool", "$default": false, "$help": "Smart split direction" },
-      "smart_resizing": { "$type": "bool", "$default": true, "$help": "Smart resizing for dwindle" },
-      "default_split_ratio": { "$type": "float", "$default": 0.5, "$min": 0.1, "$max": 0.9, "$help": "Default split ratio for new windows" },
-      "split_bias": { "$type": "int", "$default": 0, "$help": "Split bias (-100 to 100)" },
-      "split_width_multiplier": { "$type": "float", "$default": 1.0, "$help": "Split width multiplier" },
-      "permanent_direction_override": { "$type": "bool", "$default": false, "$help": "Permanent direction override" },
-      "use_active_for_splits": { "$type": "bool", "$default": true, "$help": "Use active window for split calculations" },
-      "special_scale_factor": { "$type": "float", "$default": 0.8, "$min": 0.0, "$max": 1.0, "$help": "Scale factor for special workspace windows" }
+      "preserve_split": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Preserve split direction when moving windows"
+      },
+      "force_split": {
+        "$type": "int",
+        "$default": 2,
+        "$min": 0,
+        "$help": "Force split behavior (0=never, 1=always, 2=auto)"
+      },
+      "precise_mouse_move": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Precise mouse movement tracking for dwindle"
+      },
+      "smart_split": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Smart split direction"
+      },
+      "smart_resizing": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Smart resizing for dwindle"
+      },
+      "default_split_ratio": {
+        "$type": "float",
+        "$default": 0.5,
+        "$min": 0.1,
+        "$max": 0.9,
+        "$help": "Default split ratio for new windows"
+      },
+      "split_bias": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Split bias (-100 to 100)"
+      },
+      "split_width_multiplier": {
+        "$type": "float",
+        "$default": 1.0,
+        "$help": "Split width multiplier"
+      },
+      "permanent_direction_override": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Permanent direction override"
+      },
+      "use_active_for_splits": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Use active window for split calculations"
+      },
+      "special_scale_factor": {
+        "$type": "float",
+        "$default": 0.8,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Scale factor for special workspace windows"
+      }
     },
     "master": {
       "$ui_label": "Master Layout",
@@ -311,13 +471,20 @@
       "orientation": {
         "$type": "enum",
         "$default": "center",
-        "$values": ["left", "center", "right"],
+        "$values": [
+          "left",
+          "center",
+          "right"
+        ],
         "$help": "Master layout: orientation"
       },
       "new_status": {
         "$type": "enum",
         "$default": "slave",
-        "$values": ["slave", "master"],
+        "$values": [
+          "slave",
+          "master"
+        ],
         "$help": "Master layout: new window placement status"
       },
       "new_on_active": {
@@ -376,21 +543,77 @@
     "scrolling": {
       "$ui_label": "Scroll Layout",
       "$help": "Scroll (horizontal/column) layout settings",
-      "direction": { "$type": "enum", "$default": "left", "$values": ["left", "right", "top", "bottom"], "$help": "Scroll layout direction" },
-      "follow_focus": { "$type": "bool", "$default": true, "$help": "Follow focus when scrolling" },
-      "follow_min_visible": { "$type": "float", "$default": 0.25, "$min": 0.0, "$max": 1.0, "$help": "Minimum visible area to follow focus" },
-      "fullscreen_on_one_column": { "$type": "bool", "$default": false, "$help": "Fullscreen windows when only one column" },
-      "column_width": { "$type": "float", "$default": 0.5, "$min": 0.1, "$max": 1.0, "$help": "Default column width ratio" },
-      "explicit_column_widths": { "$type": "str", "$default": "", "$help": "Explicit column width definitions" },
-      "focus_fit_method": { "$type": "int", "$default": 0, "$min": 0, "$max": 2, "$help": "Focus fit method (0=Squish, 1=Scale_Down, 2=Fit)" },
-      "wrap_focus": { "$type": "bool", "$default": false, "$help": "Wrap focus at layout edges" },
-      "wrap_swapcol": { "$type": "bool", "$default": false, "$help": "Swap columns when wrapping" }
+      "direction": {
+        "$type": "enum",
+        "$default": "left",
+        "$values": [
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ],
+        "$help": "Scroll layout direction"
+      },
+      "follow_focus": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Follow focus when scrolling"
+      },
+      "follow_min_visible": {
+        "$type": "float",
+        "$default": 0.25,
+        "$min": 0.0,
+        "$max": 1.0,
+        "$help": "Minimum visible area to follow focus"
+      },
+      "fullscreen_on_one_column": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Fullscreen windows when only one column"
+      },
+      "column_width": {
+        "$type": "float",
+        "$default": 0.5,
+        "$min": 0.1,
+        "$max": 1.0,
+        "$help": "Default column width ratio"
+      },
+      "explicit_column_widths": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Explicit column width definitions"
+      },
+      "focus_fit_method": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 2,
+        "$help": "Focus fit method (0=Squish, 1=Scale_Down, 2=Fit)"
+      },
+      "wrap_focus": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Wrap focus at layout edges"
+      },
+      "wrap_swapcol": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Swap columns when wrapping"
+      }
     },
     "layout": {
       "$ui_label": "Layout",
       "$help": "General layout settings",
-      "single_window_aspect_ratio": { "$type": "str", "$default": "0 0", "$help": "Preferred aspect ratio as 'w h' (0 0 = off)" },
-      "single_window_aspect_ratio_tolerance": { "$type": "float", "$default": 0.3, "$help": "Tolerance for single window aspect ratio" }
+      "single_window_aspect_ratio": {
+        "$type": "str",
+        "$default": "0 0",
+        "$help": "Preferred aspect ratio as 'w h' (0 0 = off)"
+      },
+      "single_window_aspect_ratio_tolerance": {
+        "$type": "float",
+        "$default": 0.3,
+        "$help": "Tolerance for single window aspect ratio"
+      }
     }
   },
   "display": {
@@ -486,42 +709,179 @@
         "$default": false,
         "$help": "Enable ANR (Application Not Responding) dialog"
       },
-      "disable_autoreload": { "$type": "bool", "$default": false, "$help": "Disable automatic config reload" },
-      "background_color": { "$type": "str", "$default": "rgb(111111)", "$help": "Background color behind windows" },
-      "col": {
-        "splash": { "$type": "str", "$default": "rgb(ffffff)", "$help": "Splash text color" }
+      "disable_autoreload": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable automatic config reload"
       },
-      "font_family": { "$type": "str", "$default": "Sans", "$help": "Global font family" },
-      "splash_font_family": { "$type": "str", "$default": "Sans", "$help": "Splash text font family" },
-      "vrr": { "$type": "int", "$default": 0, "$min": 0, "$max": 2, "$help": "VRR mode (0=off, 1=on, 2=fullscreen)" },
-      "mouse_move_enables_dpms": { "$type": "bool", "$default": false, "$help": "Mouse movement re-enables DPMS" },
-      "key_press_enables_dpms": { "$type": "bool", "$default": false, "$help": "Key press re-enables DPMS" },
-      "mouse_move_focuses_monitor": { "$type": "bool", "$default": false, "$help": "Mouse movement focuses the monitor" },
-      "always_follow_on_dnd": { "$type": "bool", "$default": true, "$help": "Always follow drag-and-drop" },
-      "layers_hog_keyboard_focus": { "$type": "bool", "$default": true, "$help": "Layer surfaces hog keyboard focus" },
-      "animate_manual_resizes": { "$type": "bool", "$default": false, "$help": "Animate manual window resizes" },
-      "animate_mouse_windowdragging": { "$type": "bool", "$default": false, "$help": "Animate window dragging with mouse" },
-      "enable_swallow": { "$type": "bool", "$default": false, "$help": "Enable window swallowing" },
-      "swallow_regex": { "$type": "str", "$default": "", "$help": "Regex for windows that swallow others" },
-      "swallow_exception_regex": { "$type": "str", "$default": "", "$help": "Regex for windows that cannot be swallowed" },
-      "focus_on_activate": { "$type": "bool", "$default": true, "$help": "Focus windows on activation" },
-      "no_direct_scanout": { "$type": "bool", "$default": false, "$help": "Disable direct scanout" },
-      "render_unfocused_fps": { "$type": "int", "$default": 0, "$min": 0, "$help": "FPS cap for unfocused windows (0=unlimited)" },
-      "lockdead_screen_delay": { "$type": "int", "$default": 0, "$min": 0, "$help": "Delay before showing lock screen" },
-      "anr_missed_pings": { "$type": "int", "$default": 0, "$help": "ANR missed pings threshold" },
-      "allow_session_lock_restore": { "$type": "bool", "$default": false, "$help": "Allow session lock restore" },
-      "close_special_on_empty": { "$type": "bool", "$default": true, "$help": "Close special workspace when empty" },
-      "exit_window_retains_fullscreen": { "$type": "bool", "$default": false, "$help": "Exit fullscreen when closing a fullscreen window" },
-      "middle_click_paste": { "$type": "bool", "$default": true, "$help": "Enable middle-click paste" },
-      "disable_scale_notification": { "$type": "bool", "$default": false, "$help": "Disable scale change notifications" },
-      "disable_xdg_env_checks": { "$type": "bool", "$default": false, "$help": "Disable XDG environment checks" },
-      "disable_hyprland_guiutils_check": { "$type": "bool", "$default": false, "$help": "Disable Hyprland GUI utils check" },
-      "disable_watchdog_warning": { "$type": "bool", "$default": false, "$help": "Disable watchdog warnings" },
-      "screencopy_force_8b": { "$type": "bool", "$default": false, "$help": "Force 8-bit screencopy" },
-      "session_lock_xray": { "$type": "bool", "$default": false, "$help": "Session lock xray mode" },
-      "size_limits_tiled": { "$type": "bool", "$default": false, "$help": "Apply size limits to tiled windows" },
-      "name_vk_after_proc": { "$type": "bool", "$default": true, "$help": "Name virtual keyboards after their process" },
-      "on_focus_under_fullscreen": { "$type": "int", "$default": 0, "$min": 0, "$max": 1, "$help": "Focus behavior under fullscreen" }
+      "background_color": {
+        "$type": "str",
+        "$default": "rgb(111111)",
+        "$help": "Background color behind windows"
+      },
+      "col": {
+        "splash": {
+          "$type": "str",
+          "$default": "rgb(ffffff)",
+          "$help": "Splash text color"
+        }
+      },
+      "font_family": {
+        "$type": "str",
+        "$default": "Sans",
+        "$help": "Global font family"
+      },
+      "splash_font_family": {
+        "$type": "str",
+        "$default": "Sans",
+        "$help": "Splash text font family"
+      },
+      "vrr": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 2,
+        "$help": "VRR mode (0=off, 1=on, 2=fullscreen)"
+      },
+      "mouse_move_enables_dpms": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Mouse movement re-enables DPMS"
+      },
+      "key_press_enables_dpms": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Key press re-enables DPMS"
+      },
+      "mouse_move_focuses_monitor": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Mouse movement focuses the monitor"
+      },
+      "always_follow_on_dnd": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Always follow drag-and-drop"
+      },
+      "layers_hog_keyboard_focus": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Layer surfaces hog keyboard focus"
+      },
+      "animate_manual_resizes": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Animate manual window resizes"
+      },
+      "animate_mouse_windowdragging": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Animate window dragging with mouse"
+      },
+      "enable_swallow": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Enable window swallowing"
+      },
+      "swallow_regex": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Regex for windows that swallow others"
+      },
+      "swallow_exception_regex": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Regex for windows that cannot be swallowed"
+      },
+      "focus_on_activate": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Focus windows on activation"
+      },
+      "render_unfocused_fps": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$help": "FPS cap for unfocused windows (0=unlimited)"
+      },
+      "lockdead_screen_delay": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$help": "Delay before showing lock screen"
+      },
+      "anr_missed_pings": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "ANR missed pings threshold"
+      },
+      "allow_session_lock_restore": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Allow session lock restore"
+      },
+      "close_special_on_empty": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Close special workspace when empty"
+      },
+      "exit_window_retains_fullscreen": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Exit fullscreen when closing a fullscreen window"
+      },
+      "middle_click_paste": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Enable middle-click paste"
+      },
+      "disable_scale_notification": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable scale change notifications"
+      },
+      "disable_xdg_env_checks": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable XDG environment checks"
+      },
+      "disable_hyprland_guiutils_check": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable Hyprland GUI utils check"
+      },
+      "disable_watchdog_warning": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable watchdog warnings"
+      },
+      "screencopy_force_8b": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Force 8-bit screencopy"
+      },
+      "session_lock_xray": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Session lock xray mode"
+      },
+      "size_limits_tiled": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Apply size limits to tiled windows"
+      },
+      "name_vk_after_proc": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Name virtual keyboards after their process"
+      },
+      "on_focus_under_fullscreen": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 1,
+        "$help": "Focus behavior under fullscreen"
+      }
     },
     "render": {
       "$ui_label": "Rendering",
@@ -700,29 +1060,127 @@
         "$max": 1,
         "$help": "Pointer sensitivity"
       },
-      "kb_model": { "$type": "str", "$default": "", "$help": "Keyboard model" },
-      "kb_variant": { "$type": "str", "$default": "", "$help": "Keyboard layout variant" },
-      "kb_options": { "$type": "str", "$default": "", "$help": "Keyboard options string" },
-      "kb_rules": { "$type": "str", "$default": "", "$help": "Keyboard rules" },
-      "kb_file": { "$type": "str", "$default": "", "$help": "Keyboard config file path" },
-      "natural_scroll": { "$type": "bool", "$default": false, "$help": "Natural scrolling for pointer" },
-      "left_handed": { "$type": "bool", "$default": false, "$help": "Left-handed mouse mode" },
-      "focus_on_close": { "$type": "int", "$default": 0, "$min": 0, "$max": 1, "$help": "Focus behavior when window closes" },
-      "mouse_refocus": { "$type": "bool", "$default": true, "$help": "Refocus window under cursor on mouse movement" },
-      "float_switch_override_focus": { "$type": "int", "$default": 0, "$help": "Override focus when switching to float" },
-      "repeat_rate": { "$type": "int", "$default": 25, "$min": 0, "$help": "Key repeat rate (chars per second)" },
-      "repeat_delay": { "$type": "int", "$default": 600, "$min": 0, "$help": "Key repeat delay (milliseconds)" },
-      "scroll_factor": { "$type": "float", "$default": 1.0, "$help": "General scroll factor" },
-      "scroll_button": { "$type": "int", "$default": 0, "$help": "Mouse button for scroll (0=disable)" },
-      "scroll_button_lock": { "$type": "bool", "$default": false, "$help": "Lock scroll button" },
-      "scroll_points": { "$type": "str", "$default": "", "$help": "Custom scroll point values" },
-      "emulate_discrete_scroll": { "$type": "bool", "$default": true, "$help": "Emulate discrete scroll events" },
-      "off_window_axis_events": { "$type": "bool", "$default": false, "$help": "Process axis events off-window" },
-      "rotation": { "$type": "int", "$default": 0, "$min": 0, "$max": 3, "$help": "Pointer rotation (0-3)" },
-      "force_no_accel": { "$type": "bool", "$default": false, "$help": "Force no pointer acceleration" },
-      "resolve_binds_by_sym": { "$type": "bool", "$default": false, "$help": "Resolve keybinds by symbol" },
-      "follow_mouse_shrink": { "$type": "int", "$default": 0, "$help": "Shrink follow mouse area" },
-      "follow_mouse_threshold": { "$type": "int", "$default": 0, "$help": "Follow mouse threshold" },
+      "kb_model": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Keyboard model"
+      },
+      "kb_variant": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Keyboard layout variant"
+      },
+      "kb_options": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Keyboard options string"
+      },
+      "kb_rules": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Keyboard rules"
+      },
+      "kb_file": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Keyboard config file path"
+      },
+      "natural_scroll": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Natural scrolling for pointer"
+      },
+      "left_handed": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Left-handed mouse mode"
+      },
+      "focus_on_close": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 1,
+        "$help": "Focus behavior when window closes"
+      },
+      "mouse_refocus": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Refocus window under cursor on mouse movement"
+      },
+      "float_switch_override_focus": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Override focus when switching to float"
+      },
+      "repeat_rate": {
+        "$type": "int",
+        "$default": 25,
+        "$min": 0,
+        "$help": "Key repeat rate (chars per second)"
+      },
+      "repeat_delay": {
+        "$type": "int",
+        "$default": 600,
+        "$min": 0,
+        "$help": "Key repeat delay (milliseconds)"
+      },
+      "scroll_factor": {
+        "$type": "float",
+        "$default": 1.0,
+        "$help": "General scroll factor"
+      },
+      "scroll_button": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Mouse button for scroll (0=disable)"
+      },
+      "scroll_button_lock": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Lock scroll button"
+      },
+      "scroll_points": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Custom scroll point values"
+      },
+      "emulate_discrete_scroll": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Emulate discrete scroll events"
+      },
+      "off_window_axis_events": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Process axis events off-window"
+      },
+      "rotation": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 3,
+        "$help": "Pointer rotation (0-3)"
+      },
+      "force_no_accel": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Force no pointer acceleration"
+      },
+      "resolve_binds_by_sym": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Resolve keybinds by symbol"
+      },
+      "follow_mouse_shrink": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Shrink follow mouse area"
+      },
+      "follow_mouse_threshold": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Follow mouse threshold"
+      },
       "touchpad": {
         "disable_while_typing": {
           "$type": "bool",
@@ -741,15 +1199,51 @@
           "$max": 5.0,
           "$help": "Touchpad scroll speed factor"
         },
-        "tap_to_click": { "$type": "bool", "$default": true, "$help": "Tap-to-click on touchpad" },
-        "clickfinger_behavior": { "$type": "bool", "$default": false, "$help": "Clickfinger behavior" },
-        "tap_button_map": { "$type": "str", "$default": "lrm", "$help": "Tap button mapping" },
-        "drag_lock": { "$type": "bool", "$default": false, "$help": "Drag lock on touchpad" },
-        "tap_and_drag": { "$type": "bool", "$default": true, "$help": "Tap-and-drag on touchpad" },
-        "middle_button_emulation": { "$type": "bool", "$default": false, "$help": "Middle button emulation" },
-        "flip_x": { "$type": "bool", "$default": false, "$help": "Flip touchpad X axis" },
-        "flip_y": { "$type": "bool", "$default": false, "$help": "Flip touchpad Y axis" },
-        "drag_3fg": { "$type": "bool", "$default": false, "$help": "3-finger drag on touchpad" }
+        "tap_to_click": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Tap-to-click on touchpad"
+        },
+        "clickfinger_behavior": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Clickfinger behavior"
+        },
+        "tap_button_map": {
+          "$type": "str",
+          "$default": "lrm",
+          "$help": "Tap button mapping"
+        },
+        "drag_lock": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Drag lock on touchpad"
+        },
+        "tap_and_drag": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Tap-and-drag on touchpad"
+        },
+        "middle_button_emulation": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Middle button emulation"
+        },
+        "flip_x": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Flip touchpad X axis"
+        },
+        "flip_y": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Flip touchpad Y axis"
+        },
+        "drag_3fg": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "3-finger drag on touchpad"
+        }
       },
       "tablet": {
         "output": {
@@ -757,23 +1251,79 @@
           "$default": "current",
           "$help": "Tablet output binding"
         },
-        "relative_input": { "$type": "bool", "$default": false, "$help": "Relative input mode for tablet" },
-        "left_handed": { "$type": "bool", "$default": false, "$help": "Left-handed tablet mode" },
-        "transform": { "$type": "int", "$default": 0, "$min": 0, "$max": 7, "$help": "Tablet transform" },
-        "region_position": { "$type": "str", "$default": "0 0", "$help": "Tablet region position (x y)" },
-        "region_size": { "$type": "str", "$default": "0 0", "$help": "Tablet region size (w h)" },
-        "active_area_position": { "$type": "str", "$default": "0 0", "$help": "Tablet active area position" },
-        "active_area_size": { "$type": "str", "$default": "0 0", "$help": "Tablet active area size" },
-        "absolute_region_position": { "$type": "bool", "$default": false, "$help": "Absolute tablet region positioning" }
+        "relative_input": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Relative input mode for tablet"
+        },
+        "left_handed": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Left-handed tablet mode"
+        },
+        "transform": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$max": 7,
+          "$help": "Tablet transform"
+        },
+        "region_position": {
+          "$type": "str",
+          "$default": "0 0",
+          "$help": "Tablet region position (x y)"
+        },
+        "region_size": {
+          "$type": "str",
+          "$default": "0 0",
+          "$help": "Tablet region size (w h)"
+        },
+        "active_area_position": {
+          "$type": "str",
+          "$default": "0 0",
+          "$help": "Tablet active area position"
+        },
+        "active_area_size": {
+          "$type": "str",
+          "$default": "0 0",
+          "$help": "Tablet active area size"
+        },
+        "absolute_region_position": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Absolute tablet region positioning"
+        }
       },
       "touchdevice": {
-        "enabled": { "$type": "bool", "$default": true, "$help": "Enable touch device input" },
-        "output": { "$type": "str", "$default": "", "$help": "Touch device output binding" },
-        "transform": { "$type": "int", "$default": 0, "$min": 0, "$max": 7, "$help": "Touch device transform" }
+        "enabled": {
+          "$type": "bool",
+          "$default": true,
+          "$help": "Enable touch device input"
+        },
+        "output": {
+          "$type": "str",
+          "$default": "",
+          "$help": "Touch device output binding"
+        },
+        "transform": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$max": 7,
+          "$help": "Touch device transform"
+        }
       },
       "virtualkeyboard": {
-        "release_pressed_on_close": { "$type": "bool", "$default": false, "$help": "Release pressed keys when virtual keyboard closes" },
-        "share_states": { "$type": "bool", "$default": false, "$help": "Share virtual keyboard states" }
+        "release_pressed_on_close": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Release pressed keys when virtual keyboard closes"
+        },
+        "share_states": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Share virtual keyboard states"
+        }
       }
     },
     "gestures": {
@@ -816,14 +1366,45 @@
         "$default": true,
         "$help": "Allow infinite workspace swipe wrapping"
       },
-      "workspace_swipe_create_new": { "$type": "int", "$default": 0, "$min": 0, "$max": 1, "$help": "Create new workspace on swipe" },
-      "workspace_swipe_direction_lock_threshold": { "$type": "int", "$default": 10, "$min": 0, "$help": "Direction lock threshold for swipe (pixels)" },
-      "workspace_swipe_touch_invert": { "$type": "bool", "$default": false, "$help": "Invert touch swipe direction" },
-      "workspace_swipe_use_r": { "$type": "bool", "$default": true, "$help": "Use R (relative) for workspace swipe" },
-      "close_max_timeout": { "$type": "int", "$default": 1500, "$help": "Max timeout for close gesture" },
+      "workspace_swipe_create_new": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 1,
+        "$help": "Create new workspace on swipe"
+      },
+      "workspace_swipe_direction_lock_threshold": {
+        "$type": "int",
+        "$default": 10,
+        "$min": 0,
+        "$help": "Direction lock threshold for swipe (pixels)"
+      },
+      "workspace_swipe_touch_invert": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Invert touch swipe direction"
+      },
+      "workspace_swipe_use_r": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Use R (relative) for workspace swipe"
+      },
+      "close_max_timeout": {
+        "$type": "int",
+        "$default": 1500,
+        "$help": "Max timeout for close gesture"
+      },
       "scrolling": {
-        "move_snap_cursor": { "$type": "bool", "$default": false, "$help": "Snap cursor to window on scroll focus change" },
-        "move_snap_to_grid": { "$type": "bool", "$default": false, "$help": "Snap scroll to grid" }
+        "move_snap_cursor": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Snap cursor to window on scroll focus change"
+        },
+        "move_snap_to_grid": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Snap scroll to grid"
+        }
       }
     },
     "gesture_specs": {
@@ -957,28 +1538,28 @@
         "$default": false,
         "$help": "Auto-group new windows"
       },
-    "col": {
-      "border_active": {
-        "$type": "str",
-        "$default": "rgb(c4c4c4)",
-        "$help": "Active group border color (palette-mapped)"
+      "col": {
+        "border_active": {
+          "$type": "str",
+          "$default": "rgb(c4c4c4)",
+          "$help": "Active group border color (palette-mapped)"
+        },
+        "border_inactive": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Inactive group border color (palette-mapped)"
+        },
+        "border_locked_active": {
+          "$type": "str",
+          "$default": "rgb(c4c4c4)",
+          "$help": "Active locked group border color (palette-mapped)"
+        },
+        "border_locked_inactive": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Inactive locked group border color (palette-mapped)"
+        }
       },
-      "border_inactive": {
-        "$type": "str",
-        "$default": "rgb(333333)",
-        "$help": "Inactive group border color (palette-mapped)"
-      },
-      "border_locked_active": {
-        "$type": "str",
-        "$default": "rgb(c4c4c4)",
-        "$help": "Active locked group border color (palette-mapped)"
-      },
-      "border_locked_inactive": {
-        "$type": "str",
-        "$default": "rgb(333333)",
-        "$help": "Inactive locked group border color (palette-mapped)"
-      }
-    },
       "drag_into_group": {
         "$type": "int",
         "$default": 1,
@@ -1240,24 +1821,100 @@
         "$default": true,
         "$help": "Enable Hyprcursor support (not yet consumed)"
       },
-      "inactive_timeout": { "$type": "float", "$default": 0, "$min": 0, "$help": "Cursor inactivity timeout in seconds (0=disable)" },
-      "hide_on_key_press": { "$type": "bool", "$default": false, "$help": "Hide cursor on key press" },
-      "hide_on_touch": { "$type": "bool", "$default": false, "$help": "Hide cursor on touch input" },
-      "hide_on_tablet": { "$type": "bool", "$default": false, "$help": "Hide cursor on tablet input" },
-      "no_warps": { "$type": "bool", "$default": false, "$help": "Disable cursor warping" },
-      "persistent_warps": { "$type": "bool", "$default": false, "$help": "Persistent cursor warping" },
-      "warp_on_change_workspace": { "$type": "int", "$default": 0, "$min": 0, "$max": 2, "$help": "Warp cursor on workspace change" },
-      "warp_on_toggle_special": { "$type": "bool", "$default": false, "$help": "Warp cursor on special workspace toggle" },
-      "warp_back_after_non_mouse_input": { "$type": "bool", "$default": false, "$help": "Warp cursor back after non-mouse input" },
-      "default_monitor": { "$type": "str", "$default": "", "$help": "Default monitor for cursor" },
-      "min_refresh_rate": { "$type": "int", "$default": 0, "$min": 0, "$help": "Minimum refresh rate for cursor updates" },
-      "hotspot_padding": { "$type": "int", "$default": 0, "$help": "Cursor hotspot padding" },
-      "invisible": { "$type": "bool", "$default": false, "$help": "Make cursor invisible" },
-      "no_break_fs_vrr": { "$type": "bool", "$default": false, "$help": "Don't break fullscreen VRR with cursor moves" },
-      "use_cpu_buffer": { "$type": "bool", "$default": false, "$help": "Use CPU buffer for cursor rendering" },
-      "sync_gsettings_theme": { "$type": "bool", "$default": false, "$help": "Sync cursor theme with gsettings" },
-      "zoom_detached_camera": { "$type": "bool", "$default": false, "$help": "Detach camera from cursor when zoomed" },
-      "zoom_disable_aa": { "$type": "bool", "$default": false, "$help": "Disable anti-aliasing when cursor zoomed" }
+      "inactive_timeout": {
+        "$type": "float",
+        "$default": 0,
+        "$min": 0,
+        "$help": "Cursor inactivity timeout in seconds (0=disable)"
+      },
+      "hide_on_key_press": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Hide cursor on key press"
+      },
+      "hide_on_touch": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Hide cursor on touch input"
+      },
+      "hide_on_tablet": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Hide cursor on tablet input"
+      },
+      "no_warps": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable cursor warping"
+      },
+      "persistent_warps": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Persistent cursor warping"
+      },
+      "warp_on_change_workspace": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$max": 2,
+        "$help": "Warp cursor on workspace change"
+      },
+      "warp_on_toggle_special": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Warp cursor on special workspace toggle"
+      },
+      "warp_back_after_non_mouse_input": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Warp cursor back after non-mouse input"
+      },
+      "default_monitor": {
+        "$type": "str",
+        "$default": "",
+        "$help": "Default monitor for cursor"
+      },
+      "min_refresh_rate": {
+        "$type": "int",
+        "$default": 0,
+        "$min": 0,
+        "$help": "Minimum refresh rate for cursor updates"
+      },
+      "hotspot_padding": {
+        "$type": "int",
+        "$default": 0,
+        "$help": "Cursor hotspot padding"
+      },
+      "invisible": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Make cursor invisible"
+      },
+      "no_break_fs_vrr": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Don't break fullscreen VRR with cursor moves"
+      },
+      "use_cpu_buffer": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Use CPU buffer for cursor rendering"
+      },
+      "sync_gsettings_theme": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Sync cursor theme with gsettings"
+      },
+      "zoom_detached_camera": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Detach camera from cursor when zoomed"
+      },
+      "zoom_disable_aa": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable anti-aliasing when cursor zoomed"
+      }
     },
     "env": {
       "$help": "Environment variables set before Hyprland starts",
@@ -1454,9 +2111,21 @@
     "ecosystem": {
       "$ui_label": "Ecosystem",
       "$help": "Hyprland ecosystem settings",
-      "no_donation_nag": { "$type": "bool", "$default": false, "$help": "Disable donation nag" },
-      "no_update_news": { "$type": "bool", "$default": false, "$help": "Disable update news notifications" },
-      "enforce_permissions": { "$type": "bool", "$default": false, "$help": "Enforce permission checks" }
+      "no_donation_nag": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable donation nag"
+      },
+      "no_update_news": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Disable update news notifications"
+      },
+      "enforce_permissions": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Enforce permission checks"
+      }
     },
     "bezier_curves": {
       "$help": "Named bezier curves for animation easing",
@@ -1655,42 +2324,19 @@
         "$help": "Monitor index to center new workspaces on (0 = no preference)"
       }
     },
-    "debug": {
-      "$ui_label": "Debug",
-      "$help": "Debugging and diagnostic settings",
-      "damage_blink": { "$type": "bool", "$default": false, "$help": "Blink damaged regions" },
-      "damage_tracking": { "$type": "int", "$default": 0, "$min": 0, "$max": 2, "$help": "Damage tracking mode" },
-      "overlay": { "$type": "bool", "$default": false, "$help": "Enable debug overlay" },
-      "render_solitary_wo_damage": { "$type": "bool", "$default": false, "$help": "Render solitary without damage tracking" },
-      "vfr": { "$type": "bool", "$default": true, "$help": "Enable variable frame rate" },
-      "log_damage": { "$type": "bool", "$default": false, "$help": "Log damage regions" },
-      "disable_logs": { "$type": "bool", "$default": false, "$help": "Disable all logs" },
-      "disable_time": { "$type": "bool", "$default": false, "$help": "Disable timestamps in logs" },
-      "enable_stdout_logs": { "$type": "bool", "$default": true, "$help": "Enable stdout log output" },
-      "colored_stdout_logs": { "$type": "bool", "$default": true, "$help": "Use colored stdout logs" },
-      "suppress_errors": { "$type": "bool", "$default": false, "$help": "Suppress error messages" },
-      "error_limit": { "$type": "int", "$default": 10, "$min": 0, "$help": "Error message limit" },
-      "error_position": { "$type": "enum", "$default": "warning", "$values": ["warning", "error"], "$help": "Error position logging level" },
-      "gl_debugging": { "$type": "bool", "$default": false, "$help": "Enable OpenGL debugging" },
-      "full_cm_proto": { "$type": "bool", "$default": false, "$help": "Full color management protocol" },
-      "disable_scale_checks": { "$type": "bool", "$default": false, "$help": "Disable scale checks" },
-      "invalidate_fp16": { "$type": "bool", "$default": false, "$help": "Invalidate FP16 buffers" },
-      "ds_handle_same_buffer": { "$type": "bool", "$default": true, "$help": "Handle same buffer in direct scanout" },
-      "ds_handle_same_buffer_fifo": { "$type": "bool", "$default": true, "$help": "Handle same buffer FIFO in direct scanout" },
-      "fifo_pending_workaround": { "$type": "bool", "$default": false, "$help": "FIFO pending workaround" },
-      "manual_crash": { "$type": "bool", "$default": false, "$help": "Enable manual crash trigger" },
-      "pass": { "$type": "bool", "$default": false, "$help": "Pass-through debug mode" }
-    },
-    "experimental": {
-      "$ui_label": "Experimental",
-      "$help": "Experimental features (may be unstable)",
-      "wp_cm_1_2": { "$type": "bool", "$default": false, "$help": "Enable wp-color-management-v1 protocol v1.2" }
-    },
     "quirks": {
       "$ui_label": "Quirks",
       "$help": "Compatibility quirk workarounds",
-      "prefer_hdr": { "$type": "bool", "$default": false, "$help": "Prefer HDR mode when available" },
-      "skip_non_kms_dmabuf_formats": { "$type": "bool", "$default": false, "$help": "Skip non-KMS DMA-BUF formats" }
+      "prefer_hdr": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Prefer HDR mode when available"
+      },
+      "skip_non_kms_dmabuf_formats": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Skip non-KMS DMA-BUF formats"
+      }
     }
   }
 }

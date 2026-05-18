@@ -66,6 +66,29 @@ hl.config({
 })
 
 -- ====================================================================
+-- ECOSYSTEM
+-- ====================================================================
+
+hl.config({
+  ecosystem = {
+    no_donation_nag = settings.ecosystem.no_donation_nag,
+    no_update_news = settings.ecosystem.no_update_news,
+    enforce_permissions = settings.ecosystem.enforce_permissions,
+  },
+})
+
+-- ====================================================================
+-- QUIRKS
+-- ====================================================================
+
+hl.config({
+  quirks = {
+    prefer_hdr = settings.quirks.prefer_hdr,
+    skip_non_kms_dmabuf_formats = settings.quirks.skip_non_kms_dmabuf_formats,
+  },
+})
+
+-- ====================================================================
 -- XWAYLAND
 -- ====================================================================
 
