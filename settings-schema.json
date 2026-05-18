@@ -811,87 +811,253 @@
     },
     "group": {
       "$ui_label": "Window Grouping",
-      "$help": "Window grouping/tabbing settings (not yet consumed by Lua modules)",
-      "insert_after_current": {
-        "$type": "bool",
-        "$default": true,
-        "$help": "Insert new windows after current in group"
-      },
+      "$help": "Window grouping/tabbing settings",
       "auto_group": {
         "$type": "bool",
         "$default": false,
         "$help": "Auto-group new windows"
       },
-      "merge_group": {
-        "$type": "bool",
-        "$default": false,
-        "$help": "Merge groups together"
+      "col": {
+        "border_active": {
+          "$type": "str",
+          "$default": "rgb(c4c4c4)",
+          "$help": "Active group border color (palette-mapped)"
+        },
+        "border_inactive": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Inactive group border color (palette-mapped)"
+        },
+        "border_locked_active": {
+          "$type": "str",
+          "$default": "rgb(c4c4c4)",
+          "$help": "Active locked group border color (palette-mapped)"
+        },
+        "border_locked_inactive": {
+          "$type": "str",
+          "$default": "rgb(333333)",
+          "$help": "Inactive locked group border color (palette-mapped)"
+        }
       },
-      "open_new_window": {
-        "$type": "bool",
-        "$default": true,
-        "$help": "Open new window when group is focused"
-      },
-      "group_on_movetoworkspace": {
-        "$type": "bool",
-        "$default": false,
-        "$help": "Group when moving to workspace"
+      "drag_into_group": {
+        "$type": "int",
+        "$default": 1,
+        "$min": 0,
+        "$max": 2,
+        "$help": "Drag window into group (0=off, 1=on, 2=loose)"
       },
       "focus_removed_window": {
         "$type": "bool",
         "$default": true,
         "$help": "Focus the removed window from group"
       },
-      "dragging_toggles": {
+      "group_on_movetoworkspace": {
         "$type": "bool",
         "$default": false,
-        "$help": "Dragging toggles group membership"
+        "$help": "Group when moving to workspace"
+      },
+      "insert_after_current": {
+        "$type": "bool",
+        "$default": true,
+        "$help": "Insert new windows after current in group"
+      },
+      "merge_floated_into_tiled_on_groupbar": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Merge floated windows into tiled ones on group bar"
+      },
+      "merge_groups_on_drag": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Merge groups when dragging a group into another"
+      },
+      "merge_groups_on_groupbar": {
+        "$type": "bool",
+        "$default": false,
+        "$help": "Merge groups on group bar"
       },
       "groupbar": {
+        "$help": "Group bar appearance and behavior",
+        "blur": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Blur group bar background"
+        },
+        "col": {
+          "active": {
+            "$type": "str",
+            "$default": "rgb(c4c4c4)",
+            "$help": "Active group bar color (palette-mapped)"
+          },
+          "inactive": {
+            "$type": "str",
+            "$default": "rgb(333333)",
+            "$help": "Inactive group bar color (palette-mapped)"
+          },
+          "locked_active": {
+            "$type": "str",
+            "$default": "rgb(c4c4c4)",
+            "$help": "Active locked group bar color (palette-mapped)"
+          },
+          "locked_inactive": {
+            "$type": "str",
+            "$default": "rgb(333333)",
+            "$help": "Inactive locked group bar color (palette-mapped)"
+          }
+        },
         "enabled": {
           "$type": "bool",
           "$default": true,
           "$help": "Enable group bar"
+        },
+        "font_family": {
+          "$type": "str",
+          "$default": "Sans",
+          "$help": "Group bar font family"
         },
         "font_size": {
           "$type": "int",
           "$default": 8,
           "$help": "Group bar font size"
         },
+        "font_weight_active": {
+          "$type": "str",
+          "$default": "bold",
+          "$help": "Font weight for active group bar title"
+        },
+        "font_weight_inactive": {
+          "$type": "str",
+          "$default": "normal",
+          "$help": "Font weight for inactive group bar title"
+        },
+        "gaps_in": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Internal gaps within group bar"
+        },
+        "gaps_out": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "External gaps around group bar"
+        },
+        "gradient_round_only_edges": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Apply gradient rounding only to edges"
+        },
+        "gradient_rounding": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Gradient rounding radius"
+        },
+        "gradient_rounding_power": {
+          "$type": "float",
+          "$default": 2.0,
+          "$help": "Gradient rounding power"
+        },
         "gradients": {
           "$type": "bool",
           "$default": true,
-          "$help": "Group bar gradients"
+          "$help": "Enable group bar gradients"
         },
         "height": {
           "$type": "int",
           "$default": 14,
           "$help": "Group bar height"
         },
+        "indicator_gap": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Gap for group bar indicator"
+        },
+        "indicator_height": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Height of group bar indicator"
+        },
+        "keep_upper_gap": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Keep upper gap in group bar"
+        },
+        "middle_click_close": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Middle-click to close group bar windows"
+        },
         "priority": {
-          "$type": "enum",
-          "$default": "none",
-          "$values": [
-            "none",
-            "title",
-            "order"
-          ],
-          "$help": "Group bar priority mode"
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$max": 2,
+          "$help": "Group bar priority (0=none, 1=title, 2=order)"
         },
         "render_titles": {
           "$type": "bool",
           "$default": true,
           "$help": "Render window titles in group bar"
         },
+        "round_only_edges": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Round only the edges of the group bar"
+        },
+        "rounding": {
+          "$type": "int",
+          "$default": 0,
+          "$min": 0,
+          "$help": "Group bar rounding radius"
+        },
+        "rounding_power": {
+          "$type": "float",
+          "$default": 2.0,
+          "$help": "Group bar rounding power"
+        },
         "scrolling": {
           "$type": "bool",
           "$default": true,
           "$help": "Scroll to switch group windows"
         },
+        "stacked": {
+          "$type": "bool",
+          "$default": false,
+          "$help": "Stacked group bar layout"
+        },
         "text_color": {
           "$type": "str",
           "$default": "rgb(ffffff)",
-          "$help": "Group bar text color"
+          "$help": "Active group bar text color (palette-mapped)"
+        },
+        "text_color_inactive": {
+          "$type": "str",
+          "$default": "rgb(999999)",
+          "$help": "Inactive group bar text color (palette-mapped)"
+        },
+        "text_color_locked_active": {
+          "$type": "str",
+          "$default": "rgb(ffffff)",
+          "$help": "Active locked group bar text color (palette-mapped)"
+        },
+        "text_color_locked_inactive": {
+          "$type": "str",
+          "$default": "rgb(999999)",
+          "$help": "Inactive locked group bar text color (palette-mapped)"
+        },
+        "text_offset": {
+          "$type": "int",
+          "$default": 0,
+          "$help": "Text offset within the group bar"
+        },
+        "text_padding": {
+          "$type": "int",
+          "$default": 4,
+          "$min": 0,
+          "$help": "Text padding within the group bar"
         }
       }
     }

@@ -68,6 +68,70 @@ hl.config({
 })
 
 -- ====================================================================
+-- GROUP / TABBING
+-- ====================================================================
+
+hl.config({
+  group = {
+    auto_group = settings.group.auto_group,
+    drag_into_group = settings.group.drag_into_group,
+    focus_removed_window = settings.group.focus_removed_window,
+    group_on_movetoworkspace = settings.group.group_on_movetoworkspace,
+    insert_after_current = settings.group.insert_after_current,
+    merge_floated_into_tiled_on_groupbar = settings.group.merge_floated_into_tiled_on_groupbar,
+    merge_groups_on_drag = settings.group.merge_groups_on_drag,
+    merge_groups_on_groupbar = settings.group.merge_groups_on_groupbar,
+
+    col = {
+      border_active = colors.c4,
+      border_inactive = colors.base,
+      border_locked_active = colors.c4,
+      border_locked_inactive = colors.base,
+    },
+
+    groupbar = {
+      blur = settings.group.groupbar.blur,
+      enabled = settings.group.groupbar.enabled,
+      font_family = settings.group.groupbar.font_family,
+      font_size = settings.group.groupbar.font_size,
+      font_weight_active = settings.group.groupbar.font_weight_active,
+      font_weight_inactive = settings.group.groupbar.font_weight_inactive,
+      gaps_in = settings.group.groupbar.gaps_in,
+      gaps_out = settings.group.groupbar.gaps_out,
+      gradient_round_only_edges = settings.group.groupbar.gradient_round_only_edges,
+      gradient_rounding = settings.group.groupbar.gradient_rounding,
+      gradient_rounding_power = settings.group.groupbar.gradient_rounding_power,
+      gradients = settings.group.groupbar.gradients,
+      height = settings.group.groupbar.height,
+      indicator_gap = settings.group.groupbar.indicator_gap,
+      indicator_height = settings.group.groupbar.indicator_height,
+      keep_upper_gap = settings.group.groupbar.keep_upper_gap,
+      middle_click_close = settings.group.groupbar.middle_click_close,
+      priority = settings.group.groupbar.priority,
+      render_titles = settings.group.groupbar.render_titles,
+      round_only_edges = settings.group.groupbar.round_only_edges,
+      rounding = settings.group.groupbar.rounding,
+      rounding_power = settings.group.groupbar.rounding_power,
+      scrolling = settings.group.groupbar.scrolling,
+      stacked = settings.group.groupbar.stacked,
+      text_color = colors.standard,
+      text_color_inactive = colors.muted,
+      text_color_locked_active = colors.standard,
+      text_color_locked_inactive = colors.muted,
+      text_offset = settings.group.groupbar.text_offset,
+      text_padding = settings.group.groupbar.text_padding,
+
+      col = {
+        active = colors.c4,
+        inactive = colors.base,
+        locked_active = colors.c4,
+        locked_inactive = colors.base,
+      },
+    },
+  },
+})
+
+-- ====================================================================
 -- MAIN LOOK AND FEEL
 -- ====================================================================
 
