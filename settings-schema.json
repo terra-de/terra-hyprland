@@ -503,25 +503,11 @@
     },
     "opengl": {
       "$ui_label": "OpenGL",
-      "$help": "OpenGL settings (not yet consumed by Lua modules)",
+      "$help": "OpenGL settings",
       "nvidia_anti_flicker": {
         "$type": "bool",
         "$default": false,
         "$help": "NVIDIA anti-flicker workaround"
-      },
-      "force_hyprland_glx": {
-        "$type": "bool",
-        "$default": false,
-        "$help": "Force Hyprland GLX context"
-      },
-      "glx_context_type": {
-        "$type": "enum",
-        "$default": "attrib",
-        "$values": [
-          "attrib",
-          "class"
-        ],
-        "$help": "GLX context type"
       }
     }
   },
