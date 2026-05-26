@@ -1950,7 +1950,7 @@
     "programs": {
       "terminal": {
         "$type": "str",
-        "$default": "foot zellij-session-picker",
+        "$default": "terraterm",
         "$help": "Terminal emulator command"
       },
       "quickterm": {

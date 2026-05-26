@@ -155,7 +155,7 @@
   ],
 
   "programs": {
-    "terminal": "foot zellij-session-picker",
+    "terminal": "terraterm",
     "quickterm": "foot zellij attach -c quickterm",
     "file_manager": "dolphin",
     "browser": "firefox"
