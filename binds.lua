@@ -107,7 +107,7 @@ utils.bind_keys({
 
   -- Apps
   ["main-F"]                = { hl.dsp.exec_cmd("dolphin"), desc = "File manager", icon = "folder" },
-  ["main-Q"]                = { hl.dsp.exec_cmd("foot zellij-session-picker"), desc = "Terminal", icon = "terminal" },
+  ["main-Q"]                = { hl.dsp.exec_cmd("terraterm"), desc = "Terminal", icon = "terminal" },
   ["main-B"]                = { hl.dsp.exec_cmd("firefox"), desc = "Browser", icon = "language" },
   ["main-C"]                = { hl.dsp.window.close(), desc = "Close window", icon = "close" },
 
