@@ -1955,7 +1955,7 @@
       },
       "quickterm": {
         "$type": "str",
-        "$default": "foot zellij attach -c quickterm",
+        "$default": "terraterm --no-picker terra-tmux new -At quickterm",
         "$help": "Quick terminal (scratchpad) command"
       },
       "file_manager": {
@@ -2101,7 +2101,7 @@
             "bottom": 0,
             "right": 30
           },
-          "on_created_empty": "foot zellij attach -c quickterm"
+          "on_created_empty": "terraterm --no-picker terra-tmux new -At quickterm"
         }
       ]
     }

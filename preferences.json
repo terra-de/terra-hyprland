@@ -1,12 +1,10 @@
 {
   "version": 1,
-
   "cursor": {
     "theme": "Bibata-Modern-Classic",
     "size": 24,
     "no_hardware_cursors": true
   },
-
   "general": {
     "border_size": 0,
     "gaps_in": 6,
@@ -19,7 +17,6 @@
     "allow_tearing": false,
     "resize_corner": 0
   },
-
   "decoration": {
     "rounding": 16,
     "active_opacity": 1.0,
@@ -31,7 +28,10 @@
       "render_power": 3,
       "sharp": false,
       "color": "rgba(00000050)",
-      "offset": { "x": 1, "y": 1 },
+      "offset": {
+        "x": 1,
+        "y": 1
+      },
       "scale": 1.0
     },
     "dim": {
@@ -57,11 +57,9 @@
       "popups_ignorealpha": 0.2
     }
   },
-
   "animations": {
     "enabled": true
   },
-
   "misc": {
     "force_default_wallpaper": 0,
     "disable_hyprland_logo": false,
@@ -69,13 +67,11 @@
     "initial_workspace_tracking": 0,
     "enable_anr_dialog": false
   },
-
   "dwindle": {
     "preserve_split": true,
     "force_split": 2,
     "precise_mouse_move": true
   },
-
   "input": {
     "kb_layout": "us",
     "numlock_by_default": true,
@@ -93,7 +89,6 @@
       "output": "current"
     }
   },
-
   "gestures": {
     "workspace_swipe_distance": 300,
     "workspace_swipe_touch": true,
@@ -103,36 +98,109 @@
     "workspace_swipe_direction_lock": false,
     "workspace_swipe_forever": true
   },
-
   "bezier_curves": {
     "bounce": {
       "type": "bezier",
-      "points": [[0.38, 1.21], [0.22, 1.0]]
+      "points": [
+        [
+          0.38,
+          1.21
+        ],
+        [
+          0.22,
+          1.0
+        ]
+      ]
     },
     "smooth-in": {
       "type": "bezier",
-      "points": [[0.3, 0.0], [0.8, 0.15]]
+      "points": [
+        [
+          0.3,
+          0.0
+        ],
+        [
+          0.8,
+          0.15
+        ]
+      ]
     }
   },
-
   "animation_entries": {
-    "windows":             { "enabled": true,  "speed": 3,   "bezier": "bounce",    "style": "slide" },
-    "windowsOut":          { "enabled": true,  "speed": 3,   "bezier": "bounce",    "style": "slide" },
-    "layers":              { "enabled": true,  "speed": 2,   "bezier": "bounce",    "style": "slide top" },
-    "layersOut":           { "enabled": true,  "speed": 2,   "bezier": "smooth-in", "style": "slide top" },
-    "workspaces":          { "enabled": true,  "speed": 3.5, "bezier": "bounce",    "style": "slide" },
-    "specialWorkspace":    { "enabled": true,  "speed": 3,   "bezier": "bounce",    "style": "slidevert" },
-    "specialWorkspaceOut": { "enabled": true,  "speed": 2,   "bezier": "smooth-in", "style": "slidevert" }
+    "windows": {
+      "enabled": true,
+      "speed": 3,
+      "bezier": "bounce",
+      "style": "slide"
+    },
+    "windowsOut": {
+      "enabled": true,
+      "speed": 3,
+      "bezier": "bounce",
+      "style": "slide"
+    },
+    "layers": {
+      "enabled": true,
+      "speed": 2,
+      "bezier": "bounce",
+      "style": "slide top"
+    },
+    "layersOut": {
+      "enabled": true,
+      "speed": 2,
+      "bezier": "smooth-in",
+      "style": "slide top"
+    },
+    "workspaces": {
+      "enabled": true,
+      "speed": 3.5,
+      "bezier": "bounce",
+      "style": "slide"
+    },
+    "specialWorkspace": {
+      "enabled": true,
+      "speed": 3,
+      "bezier": "bounce",
+      "style": "slidevert"
+    },
+    "specialWorkspaceOut": {
+      "enabled": true,
+      "speed": 2,
+      "bezier": "smooth-in",
+      "style": "slidevert"
+    }
   },
-
   "gesture_specs": [
-    { "fingers": 4, "direction": "horizontal", "action": "workspace" },
-    { "fingers": 3, "direction": "left",   "action": "tctl", "command": "gesture left" },
-    { "fingers": 3, "direction": "right",  "action": "tctl", "command": "gesture right" },
-    { "fingers": 3, "direction": "up",     "action": "tctl", "command": "gesture up" },
-    { "fingers": 3, "direction": "down",   "action": "tctl", "command": "gesture down" }
+    {
+      "fingers": 4,
+      "direction": "horizontal",
+      "action": "workspace"
+    },
+    {
+      "fingers": 3,
+      "direction": "left",
+      "action": "tctl",
+      "command": "gesture left"
+    },
+    {
+      "fingers": 3,
+      "direction": "right",
+      "action": "tctl",
+      "command": "gesture right"
+    },
+    {
+      "fingers": 3,
+      "direction": "up",
+      "action": "tctl",
+      "command": "gesture up"
+    },
+    {
+      "fingers": 3,
+      "direction": "down",
+      "action": "tctl",
+      "command": "gesture down"
+    }
   ],
-
   "env": {
     "XCURSOR_THEME": "Bibata-Modern-Classic",
     "XCURSOR_SIZE": "24",
@@ -144,7 +212,6 @@
     "GDK_USE_PORTAL": "1",
     "GTK_ICON_THEME": "material-actions"
   },
-
   "autostart": [
     "systemctl --user start hyprpolkitagent",
     "awww-daemon",
@@ -153,14 +220,12 @@
     "hyprsunset",
     "cd ~/.config/matugen/materialized-web && uv run app.py"
   ],
-
   "programs": {
     "terminal": "terraterm",
-    "quickterm": "foot zellij attach -c quickterm",
+    "quickterm": "terraterm --no-picker terra-tmux new -At quickterm",
     "file_manager": "dolphin",
     "browser": "firefox"
   },
-
   "keys": {
     "modifiers": {
       "main": "SUPER",
@@ -170,25 +235,37 @@
     },
     "leader": "SUPER + SPACE"
   },
-
   "window_rules": {
     "suppress_maximize": true,
-    "fullscreen_classes": ["steam_app*", "factorio*", "Terraria*"],
+    "fullscreen_classes": [
+      "steam_app*",
+      "factorio*",
+      "Terraria*"
+    ],
     "additional": []
   },
-
   "layer_rules": {
-    "no_anim_namespaces": ["^quickshell(.*)?$", "selection"],
+    "no_anim_namespaces": [
+      "^quickshell(.*)?$",
+      "selection"
+    ],
     "animation_overrides": [
-      { "namespace": "wvkbd", "animation": "slide bottom" }
+      {
+        "namespace": "wvkbd",
+        "animation": "slide bottom"
+      }
     ]
   },
-
   "workspace_rules": [
     {
       "workspace": "special:quickterm",
-      "gaps_out": { "top": 150, "left": 30, "bottom": 0, "right": 30 },
-      "on_created_empty": "foot zellij attach -c quickterm"
+      "gaps_out": {
+        "top": 150,
+        "left": 30,
+        "bottom": 0,
+        "right": 30
+      },
+      "on_created_empty": "terraterm --no-picker terra-tmux new -At quickterm"
     }
   ]
 }
