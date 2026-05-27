@@ -2249,6 +2249,11 @@
         },
         "fade": {
           "enabled": false
+        },
+        "fadeOut": {
+          "enabled": true,
+          "speed": 3,
+          "bezier": "smooth-in"
         }
       }
     },
