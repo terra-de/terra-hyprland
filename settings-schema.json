@@ -2246,6 +2246,9 @@
           "speed": 2,
           "bezier": "smooth-in",
           "style": "slidevert"
+        },
+        "fade": {
+          "enabled": false
         }
       }
     },
