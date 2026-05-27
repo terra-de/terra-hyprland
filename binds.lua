@@ -78,12 +78,12 @@ utils.bind_keys({
   ["main-mut-0"]            = { hl.dsp.window.move({ workspace = 10 }), desc = "Move to 10", icon = "looks_10" },
 
   -- Focus workspaces
-  ["main-bracketleft"]      = { hl.dsp.focus({ workspace = -1 }), desc = "Previous workspace" },
-  ["main-bracketright"]     = { hl.dsp.focus({ workspace = "+1" }), desc = "Next workspace" },
+  ["main-comma"]            = { hl.dsp.focus({ workspace = -1 }), desc = "Previous workspace" },
+  ["main-period"]           = { hl.dsp.focus({ workspace = "+1" }), desc = "Next workspace" },
 
   -- Move to workspace
-  ["main-mut-bracketleft"]  = { hl.dsp.window.move({ workspace = -1 }), desc = "Move window back" },
-  ["main-mut-bracketright"] = { hl.dsp.window.move({ workspace = "+1" }), desc = "Move window forward" },
+  ["main-mut-comma"]        = { hl.dsp.window.move({ workspace = -1 }), desc = "Move window back" },
+  ["main-mut-period"]       = { hl.dsp.window.move({ workspace = "+1" }), desc = "Move window forward" },
 
   -- Scroll through existing workspaces
   ["main-mouse_down"]       = { hl.dsp.focus({ workspace = "e+1" }), desc = "Next workspace", icon = "arrow_forward" },
