@@ -132,7 +132,9 @@ local function register_entries(entries, parent_slug, in_submap)
       end
 
       -- Entry chord → enter this submap
-      hl.bind(chord, hl.dsp.submap(slug), { description = value.group })
+      -- Prefix with @submap@ so WhichKeyTree.js can detect submap entries
+      -- even when hyprctl binds -j reports all Lua dispatchers as "__lua"
+      hl.bind(chord, hl.dsp.submap(slug), { description = "@submap@" .. value.group })
 
       -- Define the submap
       hl.define_submap(slug, function()
