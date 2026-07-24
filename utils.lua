@@ -145,8 +145,14 @@ local function register_entries(entries, parent_slug, in_submap)
         -- Register all children in this submap context
         register_entries(children, slug, true)
 
-        -- Catch-all: any undefined key press resets to global
-        hl.bind("catchall", hl.dsp.submap("reset"))
+        -- Catch-all at root level only.
+        -- Nested submaps skip catch-all because Hyprland re-evaluates the
+        -- same key event against the new submap, causing catch-all to fire
+        -- immediately and reset back to global.  Escape/backspace suffice
+        -- for navigating out of nested submaps.
+        if not parent_slug then
+          hl.bind("catchall", hl.dsp.submap("reset"))
+        end
       end)
     else
       -- === Leaf bind ===

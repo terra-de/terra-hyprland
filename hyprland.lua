@@ -109,16 +109,4 @@ hl.on("hyprland.start", function()
   log.info("=== autostart end ===")
 end)
 
--- ====================================================================
--- SUBMAP CHANGE NOTIFICATION
--- ====================================================================
-
-hl.on("keybinds.submap", function(name)
-  if name and name ~= "" then
-    hl.exec_cmd(utils.tctl_bin() .. " keys show " .. name)
-  else
-    hl.exec_cmd(utils.tctl_bin() .. " keys dismiss")
-  end
-end)
-
 log.info("=== terra-hyprland config loading complete ===")
