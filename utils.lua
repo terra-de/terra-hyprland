@@ -112,6 +112,14 @@ local function make_slug(group, parent)
   return slug
 end
 
+-- Guard flag for Hyprland's catch-all Lua dispatch interop.
+-- Hyprland v0.55+/v0.56+ collects both the explicit bind AND catch-all
+-- into bindsHit when the explicit bind's handler is "__lua" (all Lua
+-- dispatchers).  The handler == "submap" break doesn't fire for __lua,
+-- so catch-all dispatches after the explicit bind and resets the submap.
+-- Setting this flag before dispatching lets catch-all's wrapper skip.
+local _skip_catchall = false
+
 -- Recursively register binds and submaps.
 -- parent_slug is nil for root level, or the enclosing submap's slug.
 -- in_submap indicates whether we're inside a submap (triggers auto-reset for leaf binds).
@@ -134,25 +142,40 @@ local function register_entries(entries, parent_slug, in_submap)
       -- Entry chord → enter this submap
       -- Prefix with @submap@ so WhichKeyTree.js can detect submap entries
       -- even when hyprctl binds -j reports all Lua dispatchers as "__lua"
-      hl.bind(chord, hl.dsp.submap(slug), { description = "@submap@" .. value.group })
+      hl.bind(chord, function()
+        if in_submap then
+          _skip_catchall = true
+        end
+        hl.dispatch(hl.dsp.submap(slug))
+      end, { description = "@submap@" .. value.group })
 
       -- Define the submap
       hl.define_submap(slug, function()
         -- Auto: escape → reset, backspace → parent (or reset at root level)
-        hl.bind("escape", hl.dsp.submap("reset"), { description = "Close" })
-        hl.bind("backspace", hl.dsp.submap(parent_slug or "reset"), { description = parent_slug and "Back" or "Close" })
+        hl.bind("escape", function()
+          _skip_catchall = true
+          hl.dispatch(hl.dsp.submap("reset"))
+        end, { description = "Close" })
+        hl.bind("backspace", function()
+          _skip_catchall = true
+          hl.dispatch(hl.dsp.submap(parent_slug or "reset"))
+        end, { description = parent_slug and "Back" or "Close" })
 
         -- Register all children in this submap context
         register_entries(children, slug, true)
 
-        -- Catch-all at root level only.
-        -- Nested submaps skip catch-all because Hyprland re-evaluates the
-        -- same key event against the new submap, causing catch-all to fire
-        -- immediately and reset back to global.  Escape/backspace suffice
-        -- for navigating out of nested submaps.
-        if not parent_slug then
-          hl.bind("catchall", hl.dsp.submap("reset"))
-        end
+        -- Catch-all: reset on any unbound key.
+        -- Guarded by _skip_catchall to prevent firing after a real Lua
+        -- bind already handled this keypress (Hyprland collects both
+        -- explicit __lua binds and catch-all into the same dispatch
+        -- batch since the handler == "submap" break doesn't match __lua).
+        hl.bind("catchall", function()
+          if _skip_catchall then
+            _skip_catchall = false
+            return
+          end
+          hl.dispatch(hl.dsp.submap("reset"))
+        end)
       end)
     else
       -- === Leaf bind ===
@@ -160,6 +183,7 @@ local function register_entries(entries, parent_slug, in_submap)
         -- Auto-reset submap to global after dispatching the action
         local action = value[1]
         hl.bind(chord, function()
+          _skip_catchall = true
           hl.dispatch(action)
           hl.dispatch(hl.dsp.submap("reset"))
         end, build_opts(value))
