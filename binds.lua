@@ -163,7 +163,7 @@ utils.bind_keys({
 
       c = { hl.dsp.exec_cmd("sleep 0.2; hyprpicker -a"), desc = "Color pick", icon = "colorize" },
       s = { hl.dsp.exec_cmd("grim -g \"$(slurp)\""), desc = "Screenshot region", icon = "screenshot" },
-      n = { utils.tctl("controlcenter toggle"), desc = "Toggle notifications / control center" },
+      n = { utils.tctl("notifications toggle"), desc = "Toggle notification panel" },
     },
 
     s = {
