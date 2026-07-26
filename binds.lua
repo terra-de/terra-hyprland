@@ -30,8 +30,17 @@ utils.bind_keys({
   ["XF86AudioPlay"]         = { hl.dsp.exec_cmd("playerctl play-pause"), desc = "Play/pause", locked = true },
   ["XF86AudioPrev"]         = { hl.dsp.exec_cmd("playerctl previous"), desc = "Previous track", locked = true },
 
+  -- Search/picker launcher ---------
+  ["main-s"]                = { utils.tctl("pickerlauncher toggle"), desc = "Search pickers", icon = "search" },
+
+  -- Clipboard ----------------------
+  ["main-V"]                = { utils.tctl("clipboard toggle"), desc = "Clipboard history", icon = "content_paste" },
+
   -- OSK ----------------------------
-  ["main-V"]                = { utils.tctl("osk toggle"), desc = "Toggle OSK", icon = "keyboard" },
+  ["main-mut-V"]            = { utils.tctl("osk toggle"), desc = "Toggle OSK", icon = "keyboard" },
+
+  -- App drawer ---------------------
+  ["main-a"]                = { utils.tctl("appdrawer toggle"), desc = "App drawer", icon = "apps" },
 
   -- Window focus  ------------------
   ["main-h"]                = { hl.dsp.focus({ direction = "left" }) },
@@ -109,7 +118,10 @@ utils.bind_keys({
   ["main-F"]                = { hl.dsp.exec_cmd("dolphin"), desc = "File manager", icon = "folder" },
   ["main-Q"]                = { hl.dsp.exec_cmd("terraterm"), desc = "Terminal", icon = "terminal" },
   ["main-B"]                = { hl.dsp.exec_cmd("firefox"), desc = "Browser", icon = "language" },
-  ["main-C"]                = { hl.dsp.window.close(), desc = "Close window", icon = "close" },
+  ["main-mut-C"]            = { hl.dsp.window.close(), desc = "Close window", icon = "close" },
+
+  -- Reload config (direct, no submap dependency)
+  ["main-mut-r"]            = { utils.tctl("config reload"), desc = "Reload config", icon = "refresh" },
 
   -- Resize window
   ["main-scope-h"]          = { hl.dsp.window.resize({ x = -20, y = 0, relative = true }), desc = "Resize left" },
@@ -126,7 +138,7 @@ utils.bind_keys({
   ["main-space"]            = {
     group = "Leader",
 
-    r = { utils.tctl("config reload"), desc = "Reload config", icon = "refresh" },
+    r = { utils.tctl("workspace open-rename-panel"), desc = "Rename workspace", icon = "edit" },
     ["return"] = { utils.tctl("appdrawer toggle"), desc = "App drawer", icon = "apps" },
 
     w = {
