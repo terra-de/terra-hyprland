@@ -11,6 +11,7 @@
 -- Icon prefix <icon_name> is parsed by WhichKeyService for Material icon rendering.
 
 local utils = require("utils")
+local programs = require("programs")
 
 utils.bind_keys({
 
@@ -115,9 +116,9 @@ utils.bind_keys({
   ["main-mut-G"]            = { hl.dsp.window.move({ workspace = "name:Game" }), desc = "Move to game workspace" },
 
   -- Apps
-  ["main-F"]                = { hl.dsp.exec_cmd("dolphin"), desc = "File manager", icon = "folder" },
-  ["main-Q"]                = { hl.dsp.exec_cmd("terraterm"), desc = "Terminal", icon = "terminal" },
-  ["main-B"]                = { hl.dsp.exec_cmd("firefox"), desc = "Browser", icon = "language" },
+  ["main-F"]                = { hl.dsp.exec_cmd(programs.file_manager), desc = "File manager", icon = "folder" },
+  ["main-Q"]                = { hl.dsp.exec_cmd(programs.terminal), desc = "Terminal", icon = "terminal" },
+  ["main-B"]                = { hl.dsp.exec_cmd(programs.browser), desc = "Browser", icon = "language" },
   ["main-mut-C"]            = { hl.dsp.window.close(), desc = "Close window", icon = "close" },
 
   -- Reload config (direct, no submap dependency)
