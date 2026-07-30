@@ -162,6 +162,7 @@ utils.bind_keys({
       group = "Utilities",
 
       c = { hl.dsp.exec_cmd("sleep 0.2; hyprpicker -a"), desc = "Color pick", icon = "colorize" },
+      m = { utils.tctl("mediaplayer toggle"), desc = "Toggle media player", icon = "music_note" },
       s = { hl.dsp.exec_cmd("grim -g \"$(slurp)\""), desc = "Screenshot region", icon = "screenshot" },
       n = { utils.tctl("notifications toggle"), desc = "Toggle notification panel" },
     },
